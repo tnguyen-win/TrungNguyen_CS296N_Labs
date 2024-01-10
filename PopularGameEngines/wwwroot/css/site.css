@@ -1,0 +1,75 @@
+html {
+	scroll-behavior: smooth !important;
+}
+
+a {
+	color: var(--bs-info);
+}
+
+a:hover,
+a:active {
+	color: #87CEEB !important;
+}
+
+form * {
+	margin: 0.5rem 0;
+}
+
+label {
+	margin-right: 1rem;
+}
+
+.btn.btn-outline-secondary:hover,
+.btn.btn-outline-secondary:active {
+	background-color: inherit;
+	border-color: lightgray;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:active {
+	color: black !important;
+	background-color: #87CEEB !important;
+}
+
+.shadow-lg-hack {
+	/* Flip vertical direction	*/
+	box-shadow: 0 -1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.dropdown .dropdown-menu {
+		display: block;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s, opacity 0.2s linear;
+	}
+
+	.dropdown:hover .dropdown-menu {
+		visibility: visible;
+		opacity: 1;
+		transition: visibility 0s, opacity 0.2s linear;
+	}
+
+	/* Custom workaround for - https://github.com/twbs/bootstrap/issues/36897 */
+	.dropdown-menu {
+		right: auto !important;
+		left: 50% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		transform: translate(-50%, 0) !important;
+	}
+}

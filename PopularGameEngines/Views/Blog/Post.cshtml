@@ -1,0 +1,36 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "CS295N - Blog - Post";
+}
+
+<div class="mt-sm-5">
+    <h1 class="display-4 fw-bold mb-5">@ViewData["Title"]</h1>
+    <form method="post">
+        @* Title *@
+        <div>
+            <label class="fw-bold m-0" for="title">Post description</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Title</span>
+                <input id="title" class="form-control border-secondary-subtle" name="Title" />
+            </div>
+        </div>
+        @* Body *@
+        <div class="my-4">
+            <label class="fw-bold m-0" for="body">Post message</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Body</span>
+                <input id="body" class="form-control border-secondary-subtle" name="Body" />
+            </div>
+        </div>
+        @* Author *@
+        <div class="mb-3">
+            <label class="fw-bold m-0" for="author">Post sender</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Author</span>
+                <input id="author" class="form-control border-secondary-subtle" name="From.Name" />
+            </div>
+        </div>
+        @* Submit *@
+        <input class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" type="submit" value="Submit post" />
+    </form>
+</div>

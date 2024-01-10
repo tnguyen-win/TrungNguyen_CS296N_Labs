@@ -1,0 +1,56 @@
+﻿@model QuizQuestions
+@{
+    ViewData["Title"] = "CS295N - Quiz - Homepage";
+}
+
+<div class="mt-sm-5">
+    <h1 class="display-4 fw-bold mb-5">@ViewData["Title"]</h1>
+    <form method="post">
+        @* Game Engine *@
+        <div>
+            <label class="fw-bold m-0" for="question1">@Model.Questions[1]</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Yes / No</span>
+                <input id="question1" class="form-control @(Model.UserAnswers[1] == "" ? "border-secondary-subtle" : Model.Results[1] ? "border-success" : "border-danger")" name="answer1" value="@Model.UserAnswers[1]" />
+            </div>
+            <small class="@(Model.UserAnswers[1] == "" ? "d-none" : Model.Results[1] ? "text-success" : "text-danger")">
+                @(Model.UserAnswers[1] == "" ? "" : Model.Results[1] ? "Right answer" : "Wrong answer")
+            </small>
+        </div>
+        @* Editor *@
+        <div>
+            <label class="fw-bold m-0" for="question2">@Model.Questions[2]</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Yes / No / Some</span>
+                <input id="question2" class="form-control @(Model.UserAnswers[2] == "" ? "border-secondary-subtle" : Model.Results[2] ? "border-success" : "border-danger")" name="answer2" value="@Model.UserAnswers[2]" />
+            </div>
+            <small class="@(Model.UserAnswers[2] == "" ? "d-none" : Model.Results[2] ? "text-success" : "text-danger")">
+                @(Model.UserAnswers[2] == "" ? "" : Model.Results[2] ? "Right answer" : "Wrong answer")
+            </small>
+        </div>
+        @* C++ *@
+        <div>
+            <label class="fw-bold m-0" for="question3">@Model.Questions[3]</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Language</span>
+                <input id="question3" class="form-control @(Model.UserAnswers[3] == "" ? "border-secondary-subtle" : Model.Results[3] ? "border-success" : "border-danger")" name="answer3" value="@Model.UserAnswers[3]" />
+            </div>
+            <small class="@(Model.UserAnswers[3] == "" ? "d-none" : Model.Results[3] ? "text-success" : "text-danger")">
+                @(Model.UserAnswers[3] == "" ? "" : Model.Results[3] ? "Right answer" : "Wrong answer")
+            </small>
+        </div>
+        @* Unity *@
+        <div>
+            <label class="fw-bold m-0" for="question4">@Model.Questions[4]</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Game Engine</span>
+                <input id="question4" class="form-control @(Model.UserAnswers[4] == "" ? "border-secondary-subtle" : Model.Results[4] ? "border-success" : "border-danger")" name="answer4" value="@Model.UserAnswers[4]" />
+            </div>
+            <small class="@(Model.UserAnswers[4] == "" ? "d-none" : Model.Results[4] ? "text-success" : "text-danger")">
+                @(Model.UserAnswers[4] == "" ? "" : Model.Results[4] ? "Right answer" : "Wrong answer")
+            </small>
+        </div>
+        @* Submit *@
+        <input class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" type="submit" value="Submit post">
+    </form>
+</div>

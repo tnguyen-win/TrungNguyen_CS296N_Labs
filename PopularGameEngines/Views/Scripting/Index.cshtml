@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "CS295N - Scripting - Homepage";
+}
+
+<div class="mt-sm-5">
+    <h1 class="display-4 fw-bold">@ViewData["Title"]</h1>
+    <br />
+    <!-- Unreal Engine -->
+    <div id="unrealengine">
+        <h3>Unreal Engine</h3>
+        <ul>
+            <li>
+                <strong>Natively Supported API:</strong>
+                <ul>
+                    <li>C++</li>
+                    <li>
+                        <code>(Deprecated HTML5 exports since Unreal Engine 4.24 - Only supported in browsers)</code>
+                        JavaScript + WebAssembly
+                    </li>
+                </ul>
+                <strong>Natively Supported Visual Scripting:</strong>
+                <ul>
+                    <li>Blueprints</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Unity -->
+    <div id="unity">
+        <h3>Unity</h3>
+        <ul>
+            <li>
+                <strong>Natively Supported API:</strong>
+                <ul>
+                    <li>C#</li>
+                    <li>
+                        <code>(Deprecated since Unity 5)</code>
+                        Boo
+                    </li>
+                    <li>
+                        <code>(Deprecated since Unity 2018.2)</code>
+                        UnityScript
+                        <ul>
+                            <li>
+                                Boo
+                            </li>
+                            <li>
+                                JavaScript + WebAssembly
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Natively Supported Visual Scripting:</strong>
+                <ul>
+                    <li>
+                        <code>(First introduced in Unity 2021)</code>
+                        Bolt
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- CRYENGINE / Amazon Lumberyard -->
+    <div id="cryengine">
+        <h3>CRYENGINE / Amazon Lumberyard</h3>
+        <ul>
+            <li>
+                <strong>Natively Supported API:</strong>
+                <ul>
+                    <li>LUA</li>
+                    <li>C++</li>
+                </ul>
+                <strong>Natively Supported Visual Scripting:</strong>
+                <ul>
+                    <li>Flow Graph</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Godot Engine -->
+    <div id="godotengine">
+        <h3>Godot Engine</h3>
+        <ul>
+            <li>
+                <strong>Natively Supported API:</strong>
+                <ul>
+                    <li>GDScript</li>
+                    <li>C#</li>
+                    <li>
+                        <code>(Deprecated since Godot 4.0)</code>
+                        GDNative
+                        <ul>
+                            <li>C</li>
+                            <li>C++</li>
+                        </ul>
+                    <li>
+                        <code>(First introduced in Godot 4.0)</code>
+                        GDExtension
+                        <ul>
+                            <li>C</li>
+                            <li>C++</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>(Only supported in browsers)</code>
+                        JavaScript + WebAssembly
+                    </li>
+                </ul>
+                <strong>Natively Supported Visual Scripting:</strong>
+                <ul>
+                    <li>
+                        <code>(Deprecated since Godot 4.0)</code>
+                        Visual Scripting
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

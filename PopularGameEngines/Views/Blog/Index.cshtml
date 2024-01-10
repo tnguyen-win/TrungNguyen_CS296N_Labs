@@ -1,0 +1,61 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "CS295N - Blog - Homepage";
+}
+
+<div class="mt-sm-5">
+    <h1 class="display-4 fw-bold mb-5">@ViewData["Title"]</h1>
+    <form method="post">
+        @* Author *@
+        <div>
+            <label class="fw-bold m-0" for="author">Post sender</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Author</span>
+                <input for="author" class=" form-control border-secondary-subtle" name="author" />
+            </div>
+        </div>
+        @* Date *@
+        <div>
+            <label class="fw-bold m-0" for="date">Last updated</label>
+            <div class="input-group">
+                <span class="input-group-text border-secondary-subtle">Date</span>
+                <input for="date" class="form-control border-secondary-subtle" name="date" />
+            </div>
+        </div>
+        <input class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" type="submit" value="Filter" />
+        <a class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" href="/blog" />Reset Filter</a>
+    </form>
+    <br />
+    <br />
+    <br />
+    <br />
+    @if (@Model != null) {
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+            @foreach (var message in Model) {
+                <div class="col">
+                    <div class="card h-100 border border-secondary-subtle shadow-lg">
+                        <div class="d-flex card-body px-5 py-3">
+                            <div class="w-100">
+                                <h1 class="card-title fw-bold">@message.Title</h1>
+                                <p class="card-text text-muted me-auto">@message.Body</p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column card-footer text-muted border-secondary-subtle px-5 py-3">
+                            <small>
+                                <strong>Created by:</strong> @message.From?.Name
+                            </small>
+                            <small>
+                                <strong>Last updated:</strong> @message.Date
+                            </small>
+                            <small>
+                                <strong>Post rating:</strong> @message.Rating
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <br />
+    }
+    <a class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" href="/blog/post">Create post</a>
+</div>

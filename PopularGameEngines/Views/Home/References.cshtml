@@ -1,0 +1,88 @@
+﻿@{
+    @*
+        FYI - I would never use Wikipedia as a citation source in a professional field / context.
+        However though, because  I'm short on time with various deadlines, and because I'm pretty sure a lot of computer science folk already know what these term means, I'm not going to bother with finding non-Wikipedia sources for these temms.
+    *@
+    ViewData["Title"] = "CS295N - Home - References";
+    @* 1 *@
+    ViewData["Link_home_overview_game_engine"] = "https://en.wikipedia.org/wiki/Game_engine";
+    @* 2 *@
+    ViewData["Link_home_overview_scripting"] = "https://en.wikipedia.org/wiki/Scripting_language";
+    @* 3 *@
+    ViewData["Link_home_overview_visual_programming"] = "https://en.wikipedia.org/wiki/Visual_programming_language";
+    @* 4 *@
+    ViewData["Link_home_overview_indie_game"] = "https://en.wikipedia.org/wiki/Indie_game";
+    @* 5 *@
+    ViewData["Link_home_homepage_nanite"] = "https://hypebeast.com/2023/3/epic-games-unreal-engine-5-2-demo";
+    @* 6 *@
+    ViewData["Link_home_homepage_policy_changes_announcement_1"] = "https://gamefromscratch.com/unity-announce-new-pricing-and-plan-changes/";
+    @* 7 *@
+    ViewData["Link_home_homepage_policy_changes_fallout_1"] = "https://gamefromscratch.com/unity-price-change-fallout-keeps-getting-worse/";
+    @* 8 *@
+    ViewData["Link_home_homepage_policy_changes_sold_stocks"] = "https://www.eurogamer.net/unity-bosses-sold-stock-days-before-development-fees-announcement-raising-eyebrows";
+    @* 9 *@
+    ViewData["Link_home_homepage_policy_changes_death_threats"] = "https://www.theverge.com/2023/9/14/23873628/unity-death-threats-john-riccitiello";
+    @* 10 *@
+    ViewData["Link_home_homepage_policy_changes_announcement_2"] = "https://blog.unity.com/news/open-letter-on-runtime-fee";
+    @* 11 *@
+    ViewData["Link_home_homepage_policy_changes_ceo_removal"] = "https://www.theverge.com/2023/10/9/23910441/unity-ceo-president-john-riccitiello-out-retire";
+    @*
+        Since the deadline for this assignment is near due, I unfortunately ran out of time and was only able to add citations for my homepage's "unreal engine" and "unity" sections.
+        I plan to add citations the rest of that page, as well as my scripting page later on in the near future.
+    *@
+}
+
+<div class="mt-sm-5">
+    <h1 class="display-4 fw-bold">@ViewData["Title"]</h1>
+    <br />
+    <!-- Overview -->
+    <div id="overview">
+        <h3>Overview</h3>
+        <ul>
+            @* Game Engine *@
+            <li id="cit1" class="mb-3">
+                [1] <a href=@ViewData["Link_home_overview_game_engine"]>@ViewData["Link_home_overview_game_engine"]</a>
+            </li>
+            @* Scripting *@
+            <li id="cit2" class="mb-3">
+                [2] <a href=@ViewData["Link_home_overview_scripting"]>@ViewData["Link_home_overview_scripting"]</a>
+            </li>
+            @* Visual programming *@
+            <li id="cit3" class="mb-3">
+                [3] <a href=@ViewData["Link_home_overview_visual_programming"]>@ViewData["Link_home_overview_visual_programming"]</a>
+            </li>
+            @* Indie game *@
+            <li id="cit4" class="mb-3">
+                [4] <a href=@ViewData["Link_home_overview_indie_game"]>@ViewData["Link_home_overview_indie_game"]</a>
+            </li>
+            @* Nanite *@
+            <li id="cit5" class="mb-3">
+                [5] <a href=@ViewData["Link_home_homepage_nanite"]>@ViewData["Link_home_homepage_nanite"]</a>
+            </li>
+            @* Policy changes - announcement 1 *@
+            <li id="cit6" class="mb-3">
+                [6] <a href=@ViewData["Link_home_homepage_policy_changes_announcement_1"]>@ViewData["Link_home_homepage_policy_changes_announcement_1"]</a>
+            </li>
+            @* Policy changes - fallout 1 *@
+            <li id="cit7" class="mb-3">
+                [7] <a href=@ViewData["Link_home_homepage_policy_changes_fallout_1"]>@ViewData["Link_home_homepage_policy_changes_fallout_1"]</a>
+            </li>
+            @* Policy changes - sold stocks *@
+            <li id="cit8" class="mb-3">
+                [8] <a href=@ViewData["Link_home_homepage_policy_changes_sold_stocks"]>@ViewData["Link_home_homepage_policy_changes_sold_stocks"]</a>
+            </li>
+            @* Policy changes - death threats *@
+            <li id="cit9" class="mb-3">
+                [9] <a href=@ViewData["Link_home_homepage_policy_changes_death_threats"]>@ViewData["Link_home_homepage_policy_changes_death_threats"]</a>
+            </li>
+            @* Policy changes - announcement 2 *@
+            <li id="cit10" class="mb-3">
+                [10] <a href=@ViewData["Link_home_homepage_policy_changes_announcement_2"]>@ViewData["Link_home_homepage_policy_changes_announcement_2"]</a>
+            </li>
+            @* Policy changes - CEO removal *@
+            <li id="cit11" class="mb-3">
+                [11] <a href=@ViewData["Link_home_homepage_policy_changes_ceo_removal"]>@ViewData["Link_home_homepage_policy_changes_ceo_removal"]</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Popular Game Engines</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PopularGameEngines.styles.css" asp-append-version="true" />
+</head>
+<body class="bg-dark" data-bs-theme="dark">
+    @* Navbar *@
+    <header>
+        <nav class="navbar navbar-expand-lg border-bottom border-dark-subtle shadow-lg mb-5 mb-lg-0">
+            <div class="container-fluid">
+                <a class="navbar-brand text-info fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Popular Game Engines</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            @* Home *@
+                            <button class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">Home</button>
+                            <ul class="dropdown-menu">
+                                @* Overview *@
+                                <li>
+                                    <a class="dropdown-item text-light" href="/home/overview">Overview</a>
+                                </li>
+                                @* Homepage *@
+                                <li>
+                                    <a class="dropdown-item text-light" href="/">Homepage</a>
+                                </li>
+                                @* References *@
+                                <li>
+                                    <a class="dropdown-item text-light" href="/home/references">References</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider mb-0">
+                                </li>
+                                @* Privacy *@
+                                <li>
+                                    <a class="dropdown-item text-light mb-lg-1" href="/home/privacy">Privacy</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* Blog *@
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/blog">Blog</a>
+                        </li>
+                        @* Scripting *@
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/scripting">Scripting</a>
+                        </li>
+                        @* Quiz *@
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/quiz">Quiz</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @* Body *@
+    <div class="container">
+        <main role="main">@RenderBody()</main>
+    </div>
+    @* Footer *@
+    <footer class="text-muted border-top border-dark-subtle shadow-lg-hack mt-5 p-5">
+        <div id="buttonScrollToTop" class="z-2 invisible d-flex flex-row-reverse fixed-bottom m-5">
+            <button class="btn btn-lg btn-info rounded-0 border border-dark-subtle shadow-lg-hack" onclick="scrollToTop();">
+                <svg class="my-2 text-dark link-dark fw-bold" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                </svg>
+            </button>
+        </div>
+        <div class="container">&copy; 2023 - PopularGameEngines - <a class="text-info" href="/home/privacy">Privacy</a></div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
