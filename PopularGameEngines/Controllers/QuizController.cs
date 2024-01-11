@@ -16,7 +16,7 @@ namespace PopularGameEngines.Controllers {
             Answers[2] = "Some";
             Questions[3] = "What programming language is usually used in video games to help maintain high game performance?";
             Answers[3] = "C++";
-            Questions[4] = "What game engine recently had a dramatic debacle? (Mass exodus of users, plummeting of company stocks, credible death threats, etc.)";
+            Questions[4] = "What game engine recently had a dramatic debacle? (Fired CEO, mass exodus of users, plummeting of company stocks, credible death threats, etc.)";
             Answers[4] = "Unity";
         }
 
