@@ -1,84 +1,116 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Popular Game Engines</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PopularGameEngines.styles.css" asp-append-version="true" />
+    <!-- <script src="https://cdn.tailwindcss.com" asp-append-version="true"></script> -->
 </head>
-<body class="bg-dark" data-bs-theme="dark">
+
+<body class="bg-[rgb(33,37,41)] text-white">
     @* Navbar *@
-    <header>
-        <nav class="navbar navbar-expand-lg border-bottom border-dark-subtle shadow-lg mb-5 mb-lg-0">
-            <div class="container-fluid">
-                <a class="navbar-brand text-info fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Popular Game Engines</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            @* Home *@
-                            <button class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">Home</button>
-                            <ul class="dropdown-menu">
-                                @* Overview *@
+    <header class="z-40 sticky top-0 start-0 bg-inherit shadow-2xl">
+        <nav class="border-b-[1px] border-[rgb(25%,25%,25%)]">
+            <div class="lg:h-16 flex flex-col lg:flex-row lg:container lg:mx-auto">
+                @* Navbar - Left *@
+                <div class="flex flex-col lg:flex-row text-[rgb(75%,75%,75%)] lg:me-auto">
+                    <div class="h-16 flex items-center border-b-[1px] border-[rgb(25%,25%,25%)] lg:border-0">
+                        <a class="flex items-center font-black text-xl text-cyan-400 hover:text-cyan-300 p-6 lg:px-4"
+                            href="/">
+                            Popular Game Engines
+                        </a>
+                        <button id="eMobileButton" class="lg:hidden h-full flex items-center bg-red-600 ms-auto p-6"
+                            type="button" onclick="toggleMobile();">a</button>
+                    </div>
+                    <div class="eMobiles hidden lg:flex flex-col lg:flex-row">
+                        <div class="group relative flex flex-col lg:flex-row items-start lg:items-center text-sm lg:focus-within:text-white lg:hover:text-white"
+                            href="#">
+                            <button class="hidden w-full lg:flex p-6 lg:px-4">
+                                Home
+                                <svg class="hidden lg:block ms-2" stroke="currentColor" fill="currentColor"
+                                    stroke-width="0" viewBox="0 0 16 16" height="16px" width="16px"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <ul
+                                class="eMobiles hidden lg:group-focus-within:block lg:group-focus-within:hidden lg:group-hover:block lg:absolute lg:top-full lg:w-[200%] lg:start-[-50%] lg:bg-[rgb(10%,10%,10%)] lg:shadow-2xl">
                                 <li>
-                                    <a class="dropdown-item text-light" href="/home/overview">Overview</a>
+                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
+                                        href="/home/overview">
+                                        Overview
+                                    </a>
                                 </li>
-                                @* Homepage *@
                                 <li>
-                                    <a class="dropdown-item text-light" href="/">Homepage</a>
-                                </li>
-                                @* References *@
-                                <li>
-                                    <a class="dropdown-item text-light" href="/home/references">References</a>
+                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
+                                        href="/">
+                                        Homepage
+                                    </a>
                                 </li>
                                 <li>
-                                    <hr class="dropdown-divider mb-0">
+                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
+                                        href="/home/references">
+                                        References
+                                    </a>
                                 </li>
-                                @* Privacy *@
                                 <li>
-                                    <a class="dropdown-item text-light mb-lg-1" href="/home/privacy">Privacy</a>
+                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
+                                        href="/home/privacy">
+                                        Privacy
+                                    </a>
                                 </li>
                             </ul>
-                        </li>
-                        @* Blog *@
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/blog">Blog</a>
-                        </li>
-                        @* Scripting *@
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/scripting">Scripting</a>
-                        </li>
-                        @* Quiz *@
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/quiz">Quiz</a>
-                        </li>
-                    </ul>
+                        </div>
+                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/blog">
+                            Blog
+                        </a>
+                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/scripting">
+                            Scripting
+                        </a>
+                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/quiz">
+                            Quiz
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
+    <div class='eMobiles z-30 hidden fixed start-0 left-0 w-screen h-screen bg-[rgba(0,0,0,.75)]'
+        onclick="toggleMobile();"></div>
     @* Body *@
-    <div class="container">
+    <div class="container mx-auto">
         <main role="main">@RenderBody()</main>
     </div>
     @* Footer *@
-    <footer class="text-muted border-top border-dark-subtle shadow-lg-hack mt-5 p-5">
-        <div id="buttonScrollToTop" class="z-2 invisible d-flex flex-row-reverse fixed-bottom m-5">
-            <button class="btn btn-lg btn-info rounded-0 border border-dark-subtle shadow-lg-hack" onclick="scrollToTop();">
-                <svg class="my-2 text-dark link-dark fw-bold" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
-                </svg>
-            </button>
+    <footer class="text-[rgb(50%,50%,50%)] border-t-[1px] border-[rgb(25%,25%,25%)] shadow-hack p-5 pb-96">
+        <div class="container mx-auto flex flex-row items-center justify-center">
+            &copy; 2023-2024 PopularGameEngines - <a class="text-cyan-400 hover:text-cyan-300 ms-1"
+                href="/home/privacy">Privacy</a>
         </div>
-        <div class="container">&copy; 2023 - PopularGameEngines - <a class="text-info" href="/home/privacy">Privacy</a></div>
     </footer>
+    @* Scroll To Top *@
+    <div id="buttonScrollToTop" class="z-10 invisible fixed bottom-0 right-0 m-5">
+        <button class="bg-cyan-400 hover:bg-cyan-300 text-black shadow-2xl p-3" onclick="scrollToTop();">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="16px"
+                width="16px" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z">
+                </path>
+            </svg>
+        </button>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/lib/tailwindcss/tailwindcss_341.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

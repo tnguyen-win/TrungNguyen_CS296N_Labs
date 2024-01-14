@@ -1,13 +1,16 @@
 ﻿using PopularGameEngines.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PopularGameEngines.Controllers {
-    public class QuizController : Controller {
+namespace PopularGameEngines.Controllers
+{
+    public class QuizController : Controller
+    {
         public Dictionary<int, string> Questions { get; set; }
 
         public Dictionary<int, string> Answers { get; set; }
 
-        public QuizController() {
+        public QuizController()
+        {
             Questions = new Dictionary<int, string>();
             Answers = new Dictionary<int, string>();
             Questions[1] = "Are game engines required to create a video game?";
@@ -20,14 +23,16 @@ namespace PopularGameEngines.Controllers {
             Answers[4] = "Unity";
         }
 
-        public IActionResult Index() {
+        public IActionResult Index()
+        {
             var model = LoadQuestions(new QuizQuestions());
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Index(string answer1, string answer2, string answer3, string answer4) {
+        public IActionResult Index(string answer1, string answer2, string answer3, string answer4)
+        {
             var model = LoadQuestions(new QuizQuestions());
 
             model.UserAnswers[1] = answer1;
@@ -40,13 +45,15 @@ namespace PopularGameEngines.Controllers {
             return View(checkedModel);
         }
 
-        public QuizQuestions LoadQuestions(QuizQuestions model) {
+        public QuizQuestions LoadQuestions(QuizQuestions model)
+        {
             model.Questions = Questions;
             model.Answers = Answers;
             model.UserAnswers = new Dictionary<int, string>();
             model.Results = new Dictionary<int, bool>();
 
-            foreach (var question in Questions) {
+            foreach (var question in Questions)
+            {
                 int key = question.Key;
 
                 model.UserAnswers[key] = "";
@@ -55,8 +62,10 @@ namespace PopularGameEngines.Controllers {
             return model;
         }
 
-        public QuizQuestions CheckQuizAnswers(QuizQuestions model) {
-            foreach (var question in Questions) {
+        public QuizQuestions CheckQuizAnswers(QuizQuestions model)
+        {
+            foreach (var question in Questions)
+            {
                 int key = question.Key;
 
                 model.Results[key] = model.Answers[key] == model.UserAnswers[key];

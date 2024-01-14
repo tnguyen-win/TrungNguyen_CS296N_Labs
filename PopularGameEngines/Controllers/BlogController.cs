@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 //using PopularGameEngines.Data;
 //using System.Numerics;
 
-namespace PopularGameEngines.Controllers {
-    public class BlogController : Controller {
+namespace PopularGameEngines.Controllers
+{
+    public class BlogController : Controller
+    {
         //readonly AppDbContext context;
         readonly IRegistryRepository repository;
 
@@ -13,37 +15,47 @@ namespace PopularGameEngines.Controllers {
 
         // Message(s)
 
-        public IActionResult Index() {
+        public IActionResult Index()
+        {
             var messages = repository.GetMessages();
 
             return View(messages);
         }
 
         [HttpPost]
-        public IActionResult Index(string author, string date) {
+        public IActionResult Index(string author, string date)
+        {
             List<Message> messages = (from m in repository.GetMessages() select m).ToList();
 
             // Author + Date
-            if (author != null & date != null) {
+            if (author != null & date != null)
+            {
                 var matchFound = false;
 
                 foreach (var m in repository.GetMessages()) if (m.From.Name == author) matchFound = true;
 
-                try {
+                try
+                {
                     DateOnly convertedDate = DateOnly.Parse(date);
 
-                    if (matchFound) {
+                    if (matchFound)
+                    {
                         messages = (from m in repository.GetMessages()
                                     where m.From.Name == author
                                     & m.Date == convertedDate
                                     select m).ToList();
-                    } else {
+                    }
+                    else
+                    {
                         messages = (from m in repository.GetMessages()
                                     where m.Date == convertedDate
                                     select m).ToList();
                     }
-                } catch {
-                    if (matchFound) {
+                }
+                catch
+                {
+                    if (matchFound)
+                    {
                         messages = (from m in repository.GetMessages()
                                     where m.From.Name == author
                                     select m).ToList();
@@ -52,12 +64,14 @@ namespace PopularGameEngines.Controllers {
             }
 
             // Author
-            if (author != null & date == null) {
+            if (author != null & date == null)
+            {
                 var matchFound = false;
 
                 foreach (var m in repository.GetMessages()) if (m.From.Name == author) matchFound = true;
 
-                if (matchFound) {
+                if (matchFound)
+                {
                     messages = (from m in repository.GetMessages()
                                 where m.From.Name == author
                                 select m).ToList();
@@ -65,14 +79,17 @@ namespace PopularGameEngines.Controllers {
             }
 
             // Date
-            if (author == null & date != null) {
-                try {
+            if (author == null & date != null)
+            {
+                try
+                {
                     DateOnly convertedDate = DateOnly.Parse(date);
 
                     messages = (from m in repository.GetMessages()
                                 where m.Date == convertedDate
                                 select m).ToList();
-                } catch { }
+                }
+                catch { }
             }
 
             return View("Index", messages);
@@ -83,7 +100,8 @@ namespace PopularGameEngines.Controllers {
         public IActionResult Post() => View();
 
         [HttpPost]
-        public IActionResult Post(Message model) {
+        public IActionResult Post(Message model)
+        {
             Random rnd = new();
 
             // Fallbacks

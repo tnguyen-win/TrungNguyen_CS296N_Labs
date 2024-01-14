@@ -1,36 +1,43 @@
 ﻿@model Message
 @{
-    ViewData["Title"] = "CS295N - Blog - Post";
+    ViewData["Title"] = "CS296N - Blog - Post";
 }
 
-<div class="mt-sm-5">
-    <h1 class="display-4 fw-bold mb-5">@ViewData["Title"]</h1>
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
     <form method="post">
         @* Title *@
-        <div>
-            <label class="fw-bold m-0" for="title">Post description</label>
-            <div class="input-group">
-                <span class="input-group-text border-secondary-subtle">Title</span>
-                <input id="title" class="form-control border-secondary-subtle" name="Title" />
+        <div class="shadow-2xl">
+            <label class="font-black" for="title">Post description</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Title</span>
+                <input id="title" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Title"
+                    placeholder="Type here..." />
             </div>
         </div>
         @* Body *@
-        <div class="my-4">
-            <label class="fw-bold m-0" for="body">Post message</label>
-            <div class="input-group">
-                <span class="input-group-text border-secondary-subtle">Body</span>
-                <input id="body" class="form-control border-secondary-subtle" name="Body" />
+        <div class="shadow-2xl my-10">
+            <label class="font-black" for="body">Post message</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Body</span>
+                <input id="body" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Body"
+                    placeholder="Type here..." />
             </div>
         </div>
         @* Author *@
-        <div class="mb-3">
-            <label class="fw-bold m-0" for="author">Post sender</label>
-            <div class="input-group">
-                <span class="input-group-text border-secondary-subtle">Author</span>
-                <input id="author" class="form-control border-secondary-subtle" name="From.Name" />
+        <div class="shadow-2xl mb-10">
+            <label class="font-black" for="author">Post sender</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
+                <input id="author" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="From.Name"
+                    placeholder="Type here..." />
             </div>
         </div>
         @* Submit *@
-        <input class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" type="submit" value="Submit post" />
+        <input class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
+            value="Submit post" />
     </form>
 </div>

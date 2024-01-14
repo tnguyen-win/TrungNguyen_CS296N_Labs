@@ -1,5 +1,7 @@
-namespace PopularGameEngines.Models {
-    public class Message {
+namespace PopularGameEngines.Models
+{
+    public class Message
+    {
         public int MessageId { get; set; }
 
         public string? Title { get; set; }

@@ -1,46 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "CS295N - Scripting - Homepage";
+    ViewData["Title"] = "CS296N - Scripting - Homepage";
 }
 
-<div class="mt-sm-5">
-    <h1 class="display-4 fw-bold">@ViewData["Title"]</h1>
-    <br />
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
     <!-- Unreal Engine -->
-    <div id="unrealengine">
-        <h3>Unreal Engine</h3>
-        <ul>
+    <div id="unrealengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unreal Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
             <li>
-                <strong>Natively Supported API:</strong>
-                <ul>
-                    <li>C++</li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
                     <li>
-                        <code>(Deprecated HTML5 exports since Unreal Engine 4.24 - Only supported in browsers)</code>
+                        C++ <code
+                            class="text-pink-500">(Deprecated HTML5 exports since Unreal Engine 4.24 - Only supported in browsers)</code>
+                    </li>
+                    <li class="mb-5">
                         JavaScript + WebAssembly
                     </li>
                 </ul>
-                <strong>Natively Supported Visual Scripting:</strong>
-                <ul>
-                    <li>Blueprints</li>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Blueprints
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
     <!-- Unity -->
-    <div id="unity">
-        <h3>Unity</h3>
-        <ul>
+    <div id="unity" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unity</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
             <li>
-                <strong>Natively Supported API:</strong>
-                <ul>
-                    <li>C#</li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
                     <li>
-                        <code>(Deprecated since Unity 5)</code>
-                        Boo
+                        C#
                     </li>
                     <li>
-                        <code>(Deprecated since Unity 2018.2)</code>
-                        UnityScript
-                        <ul>
+                        Boo <code class="text-pink-500">(Deprecated since Unity 5)</code>
+                    </li>
+                    <li class="mb-5">
+                        UnityScript <code class="text-pink-500">(Deprecated since Unity 2018.2)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
                             <li>
                                 Boo
                             </li>
@@ -50,67 +55,90 @@
                         </ul>
                     </li>
                 </ul>
-                <strong>Natively Supported Visual Scripting:</strong>
-                <ul>
-                    <li>
-                        <code>(First introduced in Unity 2021)</code>
-                        Bolt
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Bolt <code class="text-pink-500">(First introduced in Unity 2021)</code>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
     <!-- CRYENGINE / Amazon Lumberyard -->
-    <div id="cryengine">
-        <h3>CRYENGINE / Amazon Lumberyard</h3>
-        <ul>
+    <div id="cryengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">CRYENGINE / Amazon Lumberyard</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
             <li>
-                <strong>Natively Supported API:</strong>
-                <ul>
-                    <li>LUA</li>
-                    <li>C++</li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        LUA
+                    </li>
+                    <li class="mb-5">
+                        C++
+                    </li>
                 </ul>
-                <strong>Natively Supported Visual Scripting:</strong>
-                <ul>
-                    <li>Flow Graph</li>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Flow Graph
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
     <!-- Godot Engine -->
     <div id="godotengine">
-        <h3>Godot Engine</h3>
-        <ul>
+        <h3 class="text-2xl font-black mb-5">Godot Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
             <li>
-                <strong>Natively Supported API:</strong>
-                <ul>
-                    <li>GDScript</li>
-                    <li>C#</li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
                     <li>
-                        <code>(Deprecated since Godot 4.0)</code>
+                        GDScript
+                    </li>
+                    <li>
+                        C#
+                    </li>
+                    <li>
                         GDNative
-                        <ul>
-                            <li>C</li>
-                            <li>C++</li>
-                        </ul>
-                    <li>
-                        <code>(First introduced in Godot 4.0)</code>
-                        GDExtension
-                        <ul>
-                            <li>C</li>
-                            <li>C++</li>
+                        <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>
+                                C
+                            </li>
+                            <li>
+                                C++
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <code>(Only supported in browsers)</code>
+                        GDExtension
+                        <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>
+                                C
+                            </li>
+                            <li>
+                                C++
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-5">
                         JavaScript + WebAssembly
+                        <code class="text-pink-500">(Only supported in browsers)</code>
                     </li>
                 </ul>
-                <strong>Natively Supported Visual Scripting:</strong>
-                <ul>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
                     <li>
-                        <code>(Deprecated since Godot 4.0)</code>
-                        Visual Scripting
+                        Visual Scripting <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
                     </li>
                 </ul>
             </li>

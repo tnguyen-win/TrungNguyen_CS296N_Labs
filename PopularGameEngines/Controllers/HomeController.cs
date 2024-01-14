@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace PopularGameEngines.Controllers {
-    public class HomeController : Controller {
+namespace PopularGameEngines.Controllers
+{
+    public class HomeController : Controller
+    {
         public IActionResult Index() => View();
 
         public IActionResult Privacy() => View();

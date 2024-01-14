@@ -1,10 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "CS295N - Home - Privacy";
+    ViewData["Title"] = "CS296N - Home - Privacy";
     ViewData["Link_privacy"] = "https://azure.microsoft.com/en-us/explore/trusted-cloud/privacy";
 }
 
-<div class="mt-sm-5">
-    <h1 class="display-4 fw-bold">@ViewData["Title"]</h1>
-    <br />
-    <a href=@ViewData["Link_privacy"]>@ViewData["Link_privacy"]</a>
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <a class="text-cyan-400 hover:text-cyan-300" href=@ViewData["Link_privacy"]>@ViewData["Link_privacy"]</a>
 </div>

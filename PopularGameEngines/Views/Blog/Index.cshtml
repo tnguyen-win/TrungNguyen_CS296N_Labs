@@ -1,61 +1,68 @@
 ﻿@model List<Message>
 @{
-    ViewData["Title"] = "CS295N - Blog - Homepage";
+    ViewData["Title"] = "CS296N - Blog - Homepage";
 }
 
-<div class="mt-sm-5">
-    <h1 class="display-4 fw-bold mb-5">@ViewData["Title"]</h1>
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
     <form method="post">
         @* Author *@
-        <div>
-            <label class="fw-bold m-0" for="author">Post sender</label>
-            <div class="input-group">
-                <span class="input-group-text border-secondary-subtle">Author</span>
-                <input for="author" class=" form-control border-secondary-subtle" name="author" />
+        <div class="shadow-2xl mb-10">
+            <label class="font-black" for="author">Post sender</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
+                <input for="author" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="author"
+                    placeholder="Type here..." />
             </div>
         </div>
         @* Date *@
-        <div>
-            <label class="fw-bold m-0" for="date">Last updated</label>
-            <div class="input-group">
-                <span class="input-group-text border-secondary-subtle">Date</span>
-                <input for="date" class="form-control border-secondary-subtle" name="date" />
+        <div class="shadow-2xl mb-10">
+            <label class="font-black" for="date">Last updated</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
+                <input for="date" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
+                    placeholder="Type here..." />
             </div>
         </div>
-        <input class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" type="submit" value="Filter" />
-        <a class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" href="/blog" />Reset Filter</a>
+        <input class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
+            value="Filter" />
+        <a class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" href="/blog">Reset
+            Filter</a>
     </form>
-    <br />
-    <br />
-    <br />
-    <br />
-    @if (@Model != null) {
-        <div class="row row-cols-1 row-cols-lg-3 g-4">
-            @foreach (var message in Model) {
-                <div class="col">
-                    <div class="card h-100 border border-secondary-subtle shadow-lg">
-                        <div class="d-flex card-body px-5 py-3">
-                            <div class="w-100">
-                                <h1 class="card-title fw-bold">@message.Title</h1>
-                                <p class="card-text text-muted me-auto">@message.Body</p>
+    @if (@Model != null)
+    {
+        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full my-10">
+            @foreach (var message in Model)
+            {
+                <li>
+                    <div
+                        class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl mx-5 lg:m-0">
+                        <div class="flex flex-col gap-5 rounded-t-[1rem] border-b-[1px] border-[rgb(25%,25%,25%)] p-5">
+                            <div class="text-3xl">
+                                @message.Title
+                            </div>
+                            <div class="text-[rgb(75%,75%,75%)]">
+                                @message.Body
                             </div>
                         </div>
-                        <div class="d-flex flex-column card-footer text-muted border-secondary-subtle px-5 py-3">
-                            <small>
-                                <strong>Created by:</strong> @message.From?.Name
-                            </small>
-                            <small>
-                                <strong>Last updated:</strong> @message.Date
-                            </small>
-                            <small>
-                                <strong>Post rating:</strong> @message.Rating
-                            </small>
+                        <div class="flex flex-col rounded-b-[1rem] text-[rgb(75%,75%,75%)] p-5">
+                            <div>
+                                <span class="font-black text-white">Created by:</span> @message.From?.Name
+                            </div>
+                            <div>
+                                <span class="font-black text-white">Last updated:</span> @message.Date
+                            </div>
+                            <div>
+                                <span class="font-black text-white">Post rating:</span> @message.Rating
+                            </div>
                         </div>
                     </div>
-                </div>
+                </li>
             }
-        </div>
-        <br />
+        </ul>
     }
-    <a class="btn btn-lg btn-info rounded-0 text-dark link-dark fw-bold" href="/blog/post">Create post</a>
+    <a class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
+        href="/blog/post">Createpost</a>
 </div>
