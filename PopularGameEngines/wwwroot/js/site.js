@@ -7,11 +7,11 @@ const eMobiles = document.getElementsByClassName('eMobiles');
 const eMobileButton = document.getElementById('eMobileButton');
 
 function toggleMobile() {
-    Array.from(eMobiles).forEach(e => e.classList.contains('hidden') ? (e.classList.remove('hidden'), eMobileButton.innerText = 'b') : (e.classList.add('hidden'), eMobileButton.innerText = 'a'));
+    Array.from(eMobiles).forEach(e => e.classList.contains('hidden') ? (e.classList.remove('hidden'), (eMobileButton.children[0].classList.add('hidden'), eMobileButton.children[1].classList.remove('hidden'))) : (e.classList.add('hidden'), (eMobileButton.children[0].classList.remove('hidden'), eMobileButton.children[1].classList.add('hidden'))));
 }
 
 function resetMobile() {
-    Array.from(eMobiles).forEach(e => window.matchMedia('(min-width: 1024px)') ? e.classList.add('hidden') : {});
+    Array.from(eMobiles).forEach(e => window.matchMedia('(min-width: 1024px)') ? (e.classList.add('hidden'), eMobileButton.children[0].classList.remove('hidden'), eMobileButton.children[1].classList.add('hidden')) : {});
 }
 
 function dismissCookiesBanner(e) {
