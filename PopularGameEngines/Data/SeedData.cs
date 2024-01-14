@@ -19,6 +19,7 @@ namespace PopularGameEngines
                 var message1 = new Message
                 {
                     From = user2,
+                    Title = "Test",
                     Body = "This is a test message",
                     Date = DateOnly.FromDateTime(DateTime.Now),
                     Rating = 10
@@ -29,6 +30,7 @@ namespace PopularGameEngines
                 var message2 = new Message
                 {
                     From = user1,
+                    Title = "Test",
                     Body = "This is another test message",
                     Date = DateOnly.FromDateTime(DateTime.Now),
                     Rating = 9
