@@ -14,7 +14,7 @@ folk already know what these term means, I'm not going to bother with finding no
     @* 4 *@
     ViewData["Link_home_overview_indie_game"] = "https://en.wikipedia.org/wiki/Indie_game";
     @* 5 *@
-    ViewData["Link_home_homepage_nanite"] = "https://hypebeast.com/2023/3/epic-games-unreal-engine-5-[1px]-demo";
+    ViewData["Link_home_homepage_nanite"] = "https://hypebeast.com/2023/3/epic-games-unreal-engine-5-2-demo";
     @* 6 *@
     ViewData["Link_home_homepage_policy_changes_announcement_1"] =
     "https://gamefromscratch.com/unity-announce-new-pricing-and-plan-changes/";
@@ -47,58 +47,69 @@ I plan to add citations the rest of that page, as well as my scripting page late
         <ul class="text-[rgb(75%,75%,75%)]">
             @* Game Engine *@
             <li id="cit1" class="mb-3">
-                [1] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_overview_game_engine"]>@ViewData["Link_home_overview_game_engine"]</a>
+                [1]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_overview_game_engine"]).ToString(), Body=(@ViewData["Link_home_overview_game_engine"]).ToString() }' />
             </li>
             @* Scripting *@
             <li id="cit2" class="mb-3">
-                [2] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_overview_scripting"]>@ViewData["Link_home_overview_scripting"]</a>
+                [2]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_overview_scripting"]).ToString(), Body=(@ViewData["Link_home_overview_scripting"]).ToString() }' />
             </li>
             @* Visual programming *@
             <li id="cit3" class="mb-3">
-                [3] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_overview_visual_programming"]>@ViewData["Link_home_overview_visual_programming"]</a>
+                [3]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_overview_visual_programming"]).ToString(), Body=(@ViewData["Link_home_overview_visual_programming"]).ToString() }' />
             </li>
             @* Indie game *@
             <li id="cit4" class="mb-3">
-                [4] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_overview_indie_game"]>@ViewData["Link_home_overview_indie_game"]</a>
+                [4]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_overview_indie_game"]).ToString(), Body=(@ViewData["Link_home_overview_indie_game"]).ToString() }' />
             </li>
             @* Nanite *@
             <li id="cit5" class="mb-3">
-                [5] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_nanite"]>@ViewData["Link_home_homepage_nanite"]</a>
+                [5]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_nanite"]).ToString(), Body=(@ViewData["Link_home_homepage_nanite"]).ToString() }' />
             </li>
             @* Policy changes - announcement 1 *@
             <li id="cit6" class="mb-3">
-                [6] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_announcement_1"]>@ViewData["Link_home_homepage_policy_changes_announcement_1"]</a>
+                [6]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_announcement_1"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_announcement_1"]).ToString() }' />
             </li>
             @* Policy changes - fallout 1 *@
             <li id="cit7" class="mb-3">
-                [7] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_fallout_1"]>@ViewData["Link_home_homepage_policy_changes_fallout_1"]</a>
+                [7]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_fallout_1"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_fallout_1"]).ToString() }' />
             </li>
             @* Policy changes - sold stocks *@
             <li id="cit8" class="mb-3">
-                [8] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_sold_stocks"]>@ViewData["Link_home_homepage_policy_changes_sold_stocks"]</a>
+                [8]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_sold_stocks"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_sold_stocks"]).ToString() }' />
             </li>
             @* Policy changes - death threats *@
             <li id="cit9" class="mb-3">
-                [9] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_death_threats"]>@ViewData["Link_home_homepage_policy_changes_death_threats"]</a>
+                [9]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_death_threats"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_death_threats"]).ToString() }' />
             </li>
             @* Policy changes - announcement 2 *@
             <li id="cit10" class="mb-3">
-                [10] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_announcement_2"]>@ViewData["Link_home_homepage_policy_changes_announcement_2"]</a>
+                [10]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_announcement_2"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_announcement_2"]).ToString() }' />
             </li>
             @* Policy changes - CEO removal *@
             <li id="cit11" class="mb-3">
-                [11] <a class="text-cyan-400 hover:text-cyan-300"
-                    href=@ViewData["Link_home_homepage_policy_changes_ceo_removal"]>@ViewData["Link_home_homepage_policy_changes_ceo_removal"]</a>
+                [11]
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL=(@ViewData["Link_home_homepage_policy_changes_ceo_removal"]).ToString(), Body=(@ViewData["Link_home_homepage_policy_changes_ceo_removal"]).ToString() }' />
             </li>
         </ul>
     </div>

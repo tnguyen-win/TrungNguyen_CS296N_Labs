@@ -5,5 +5,6 @@
 
 <div class="m-5 lg:mx-0 lg:my-20">
     <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
-    <a class="text-cyan-400 hover:text-cyan-300" href=@ViewData["Link_privacy"]>@ViewData["Link_privacy"]</a>
+    <partial name="~/views/shared/htmllink.cshtml"
+        model='new HtmlLink { URL=(@ViewData["Link_privacy"]).ToString(), Body=(@ViewData["Link_privacy"]).ToString() }' />
 </div>

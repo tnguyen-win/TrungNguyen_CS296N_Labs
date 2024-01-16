@@ -11,7 +11,7 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240114225129_InitialMySQL")]
+    [Migration("20240116184112_InitialMySQL")]
     partial class InitialMySQL
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
