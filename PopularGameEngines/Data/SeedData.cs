@@ -1,20 +1,22 @@
 using PopularGameEngines.Data;
 using PopularGameEngines.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace PopularGameEngines
 {
     public class SeedData
     {
-        public static void Seed(AppDbContext context)
+        public static void Seed(AppDbContext context, IServiceProvider provider)
         {
             if (!context.Messages.Any())
             {
-                var user1 = new AppUser { Name = "Brian" };
-                var user2 = new AppUser { Name = "Amanda" };
+                var userManager = provider.GetRequiredService<UserManager<AppUser>>();
+                var user1 = new AppUser { Name = "Brian Bird", UserName = "Brian" };
+                var user2 = new AppUser { Name = "Amanda Bird", UserName = "Amanda" };
+                const string SECRET_PASSWORD = "Secret!123";
 
-                context.Users.Add(user1);
-                context.Users.Add(user2);
-                context.SaveChanges();
+                userManager.CreateAsync(user1, SECRET_PASSWORD);
+                userManager.CreateAsync(user2, SECRET_PASSWORD);
 
                 var message1 = new Message
                 {

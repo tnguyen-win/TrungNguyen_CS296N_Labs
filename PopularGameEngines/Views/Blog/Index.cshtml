@@ -26,10 +26,13 @@
                     placeholder="Type here..." />
             </div>
         </div>
-        <input class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
-            value="Filter" />
-        <a class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" href="/blog">Reset
-            Filter</a>
+        <div class="flex flex-col lg:flex-row text-center gap-3">
+            <input class="bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
+                value="Filter" />
+            <a class="border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] hover:cursor-pointer p-3"
+                href="/blog">Reset
+                Filter</a>
+        </div>
     </form>
     @if (@Model != null)
     {
@@ -63,6 +66,8 @@
             }
         </ul>
     }
-    <a class="inline-block bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
-        href="/blog/post">Createpost</a>
+    <div class="flex text-center lg:text-start mb-10">
+        <a class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
+            href="/blog/post">Create post</a>
+    </div>
 </div>
