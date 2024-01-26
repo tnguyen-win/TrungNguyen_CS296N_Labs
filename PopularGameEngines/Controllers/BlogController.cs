@@ -1,17 +1,23 @@
 ﻿using PopularGameEngines.Data;
 using PopularGameEngines.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-//using PopularGameEngines.Data;
-//using System.Numerics;
 
 namespace PopularGameEngines.Controllers
 {
     public class BlogController : Controller
     {
         //readonly AppDbContext context;
-        readonly IRegistryRepository repository;
+        readonly IBlogRepository repository;
 
-        public BlogController(IRegistryRepository r) => repository = r;
+        readonly UserManager<AppUser> userManager;
+
+        public BlogController(IBlogRepository r, UserManager<AppUser> u)
+        {
+            repository = r;
+            userManager = u;
+        }
 
         // Message(s)
 
@@ -32,24 +38,27 @@ namespace PopularGameEngines.Controllers
             {
                 var matchFound = false;
 
-                foreach (var m in repository.GetMessages()) if (m.From.Name == author) matchFound = true;
+                foreach (var m in repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
 
                 try
                 {
-                    DateOnly convertedDate = DateOnly.Parse(date);
+                    if (date != null)
+                    {
+                        DateOnly convertedDate = DateOnly.Parse(date);
 
-                    if (matchFound)
-                    {
-                        messages = (from m in repository.GetMessages()
-                                    where m.From.Name == author
-                                    & m.Date == convertedDate
-                                    select m).ToList();
-                    }
-                    else
-                    {
-                        messages = (from m in repository.GetMessages()
-                                    where m.Date == convertedDate
-                                    select m).ToList();
+                        if (matchFound)
+                        {
+                            messages = (from m in repository.GetMessages()
+                                        where m.From != null && m.From.Name == author
+                                        & m.Date == convertedDate
+                                        select m).ToList();
+                        }
+                        else
+                        {
+                            messages = (from m in repository.GetMessages()
+                                        where m.Date == convertedDate
+                                        select m).ToList();
+                        }
                     }
                 }
                 catch
@@ -57,7 +66,7 @@ namespace PopularGameEngines.Controllers
                     if (matchFound)
                     {
                         messages = (from m in repository.GetMessages()
-                                    where m.From.Name == author
+                                    where m.From != null && m.From.Name == author
                                     select m).ToList();
                     }
                 }
@@ -68,12 +77,12 @@ namespace PopularGameEngines.Controllers
             {
                 var matchFound = false;
 
-                foreach (var m in repository.GetMessages()) if (m.From.Name == author) matchFound = true;
+                foreach (var m in repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
 
                 if (matchFound)
                 {
                     messages = (from m in repository.GetMessages()
-                                where m.From.Name == author
+                                where m.From != null && m.From.Name == author
                                 select m).ToList();
                 }
             }
@@ -83,11 +92,14 @@ namespace PopularGameEngines.Controllers
             {
                 try
                 {
-                    DateOnly convertedDate = DateOnly.Parse(date);
+                    if (date != null)
+                    {
+                        DateOnly convertedDate = DateOnly.Parse(date);
 
-                    messages = (from m in repository.GetMessages()
-                                where m.Date == convertedDate
-                                select m).ToList();
+                        messages = (from m in repository.GetMessages()
+                                    where m.Date == convertedDate
+                                    select m).ToList();
+                    }
                 }
                 catch { }
             }
@@ -97,9 +109,11 @@ namespace PopularGameEngines.Controllers
 
         // Message
 
+        [Authorize]
         public IActionResult Post() => View();
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post(Message model)
         {
             Random rnd = new();
@@ -107,11 +121,13 @@ namespace PopularGameEngines.Controllers
             // Fallbacks
             model.Title ??= "Random title";
             model.Body ??= "Lorem ipsum.";
-            model.From.Name ??= "John Smith";
+            if (model.From != null) model.From.Name ??= "John Smith";
 
             // Originals
             model.Date = DateOnly.FromDateTime(DateTime.Now);
             model.Rating = rnd.Next(0, 10);
+
+            if (userManager != null) model.From = userManager.GetUserAsync(User).Result;
 
             //int result =
             repository.StoreMessage(model);

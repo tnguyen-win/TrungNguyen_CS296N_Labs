@@ -1,21 +1,18 @@
 ﻿@model QuizQuestions
 @{
-    ViewData["Title"] = "CS296N - Quiz - Homepage";
+    ViewBag.Title = "CS296N - Quiz - Homepage";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <form method="post">
         @* Game Engine *@
         <div class="shadow-2xl">
-            <label class="font-black" for="question1">@Model.Questions[1]</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class='w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 @(Model.UserAnswers[1] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[1] ? "border-green-500" : "border-red-500") p-3'>Yes
-                    / No</span>
+            <label class="text-2xl font-black" for="question1">@Model.Questions[1]</label>
+            <div class="flex mt-5 mb-3">
                 <input id="question1"
                     class='w-full bg-inherit border-[1px] @(Model.UserAnswers[1] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[1] ? "border-green-500" : "border-red-500") p-3'
-                    name="answer1" value="@Model.UserAnswers[1]" placeholder="Type here..." />
+                    name="answer1" value="@Model.UserAnswers[1]" placeholder="Enter YES / NO" />
             </div>
             <small
                 class='@(Model.UserAnswers[1] == "" ? "hidden" : Model.Results[1] ? "text-green-500" : "text-red-500")'>
@@ -24,14 +21,11 @@
         </div>
         @* Editor *@
         <div class="shadow-2xl my-10">
-            <label class="font-black" for="question2">@Model.Questions[2]</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class='w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 @(Model.UserAnswers[2] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[2] ? "border-green-500" : "border-red-500") p-3'>Yes
-                    / No / Some</span>
+            <label class="text-2xl font-black" for="question2">@Model.Questions[2]</label>
+            <div class="flex mt-5 mb-3">
                 <input id="question2"
-                    class='bg-inherit border-[1px] @(Model.UserAnswers[2] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[2] ? "border-green-500" : "border-red-500") p-3'
-                    name="answer2" value="@Model.UserAnswers[2]" placeholder="Type here..." />
+                    class='w-full bg-inherit border-[1px] @(Model.UserAnswers[2] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[2] ? "border-green-500" : "border-red-500") p-3'
+                    name="answer2" value="@Model.UserAnswers[2]" placeholder="Enter YES / SOME / NO" />
             </div>
             <small
                 class='@(Model.UserAnswers[2] == "" ? "hidden" : Model.Results[2] ? "text-green-500" : "text-red-500")'>
@@ -40,13 +34,11 @@
         </div>
         @* C++ *@
         <div class="shadow-2xl">
-            <label class="font-black" for="question3">@Model.Questions[3]</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class='w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 @(Model.UserAnswers[3] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[3] ? "border-green-500" : "border-red-500") p-3'>Language</span>
+            <label class="text-2xl font-black" for="question3">@Model.Questions[3]</label>
+            <div class="flex mt-5 mb-3">
                 <input id="question3"
-                    class='bg-inherit border-[1px] @(Model.UserAnswers[3] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[3] ? "border-green-500" : "border-red-500") p-3'
-                    name="answer3" value="@Model.UserAnswers[3]" placeholder="Type here..." />
+                    class='w-full bg-inherit border-[1px] @(Model.UserAnswers[3] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[3] ? "border-green-500" : "border-red-500") p-3'
+                    name="answer3" value="@Model.UserAnswers[3]" placeholder="Enter name of a programming language" />
             </div>
             <small
                 class='@(Model.UserAnswers[3] == "" ? "hidden" : Model.Results[3] ? "text-green-500" : "text-red-500")'>
@@ -55,14 +47,11 @@
         </div>
         @* Unity *@
         <div class="shadow-2xl my-10">
-            <label class="font-black" for="question4">@Model.Questions[4]</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class='w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 @(Model.UserAnswers[4] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[4] ? "border-green-500" : "border-red-500") p-3'>Game
-                    Engine</span>
+            <label class="text-2xl font-black" for="question4">@Model.Questions[4]</label>
+            <div class="flex mt-5 mb-3">
                 <input id="question4"
-                    class='bg-inherit border-[1px] @(Model.UserAnswers[4] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[4] ? "border-green-500" : "border-red-500") p-3'
-                    name="answer4" value="@Model.UserAnswers[4]" placeholder="Type here..." />
+                    class='w-full bg-inherit border-[1px] @(Model.UserAnswers[4] == "" ? "border-[rgb(25%,25%,25%)]" : Model.Results[4] ? "border-green-500" : "border-red-500") p-3'
+                    name="answer4" value="@Model.UserAnswers[4]" placeholder="Enter name of a game engine" />
             </div>
             <small
                 class='@(Model.UserAnswers[4] == "" ? "hidden" : Model.Results[4] ? "text-green-500" : "text-red-500")'>
@@ -73,7 +62,7 @@
         <div class="flex mb-10">
             <input
                 class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black hover:cursor-pointer p-3"
-                type="submit" value="Check answers" />
+                type="submit" value="Check Answers" />
         </div>
     </form>
 </div>

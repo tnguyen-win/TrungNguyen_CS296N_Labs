@@ -6,9 +6,15 @@ namespace PopularGameEngines.Controllers
 {
     public class AccountController : Controller
     {
-        private UserManager<AppUser> userManager;
+        private readonly UserManager<AppUser> userManager;
 
-        public AccountController(UserManager<AppUser> userMngr) => userManager = userMngr;
+        private readonly SignInManager<AppUser> signInManager;
+
+        public AccountController(UserManager<AppUser> userMngr, SignInManager<AppUser> signInMgr)
+        {
+            userManager = userMngr;
+            signInManager = signInMgr;
+        }
 
         [HttpGet]
         public IActionResult Register() => View();
@@ -24,11 +30,40 @@ namespace PopularGameEngines.Controllers
                 if (result.Succeeded) return RedirectToAction("Index", "Home");
                 else foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             }
+
             return View(model);
         }
 
         [HttpGet]
-        public IActionResult Login() => View();
+        public IActionResult LogIn(string returnURL = "")
+        {
+            var model = new LoginViewModel { ReturnUrl = returnURL };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: model.RememberMe, lockoutOnFailure: false);
+
+                if (result.Succeeded) return (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl)) ? Redirect(model.ReturnUrl) : RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Invalid USERNAME / PASSWORD");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            await signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
 
         public ViewResult AccessDenied() => View();
     }

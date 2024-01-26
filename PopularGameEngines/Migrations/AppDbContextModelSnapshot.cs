@@ -242,7 +242,7 @@ namespace PopularGameEngines.Migrations
 
                     b.HasIndex("FromId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("PopularGameEngines.Models.AppUser", b =>

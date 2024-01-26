@@ -2,7 +2,7 @@
 
 namespace PopularGameEngines.Data
 {
-    public interface IRegistryRepository
+    public interface IBlogRepository
     {
         public List<Message> GetMessages();
 
