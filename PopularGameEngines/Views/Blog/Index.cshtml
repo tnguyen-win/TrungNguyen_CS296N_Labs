@@ -1,0 +1,73 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "CS296N - Blog - Homepage";
+}
+
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <form method="post">
+        @* Author *@
+        <div class="shadow-2xl mb-10">
+            <label class="font-black" for="author">Post sender</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
+                <input for="author" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="author"
+                    placeholder="Type here..." />
+            </div>
+        </div>
+        @* Date *@
+        <div class="shadow-2xl mb-10">
+            <label class="font-black" for="date">Last updated</label>
+            <div class="flex flex-col my-5">
+                <span
+                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
+                <input for="date" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
+                    placeholder="Type here..." />
+            </div>
+        </div>
+        <div class="flex flex-col lg:flex-row text-center gap-3">
+            <input class="bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
+                value="Filter" />
+            <a class="border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] hover:cursor-pointer p-3"
+                href="/blog">Reset
+                Filter</a>
+        </div>
+    </form>
+    @if (@Model != null)
+    {
+        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full my-10">
+            @foreach (var message in Model)
+            {
+                <li>
+                    <div
+                        class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl mx-5 lg:m-0">
+                        <div class="flex flex-col gap-5 rounded-t-[1rem] border-b-[1px] border-[rgb(25%,25%,25%)] p-5">
+                            <div class="text-3xl">
+                                @message.Title
+                            </div>
+                            <div class="text-[rgb(75%,75%,75%)]">
+                                @message.Body
+                            </div>
+                        </div>
+                        <div class="flex flex-col rounded-b-[1rem] text-[rgb(75%,75%,75%)] p-5">
+                            <div>
+                                <span class="font-black text-white">Created by:</span> @message.From?.Name
+                            </div>
+                            <div>
+                                <span class="font-black text-white">Last updated:</span> @message.Date
+                            </div>
+                            <div>
+                                <span class="font-black text-white">Post rating:</span> @message.Rating
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    <div class="flex text-center lg:text-start mb-10">
+        <a class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
+            href="/blog/post">Create post</a>
+    </div>
+</div>

@@ -1,0 +1,242 @@
+﻿@model HtmlLink
+@{
+    ViewData["Title"] = "CS296N - Home - Homepage";
+}
+
+<div
+    class="z-20 fixed bottom-0 flex flex-col lg:flex-row items-center justify-center gap-5 bg-[rgb(10%,10%,10%)] text-[rgb(75%,75%,75%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl container mx-auto lg:mb-5 p-4">
+    This site uses cookies.
+    <div>
+        <a class="text-white border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] p-3"
+            href="/home/privacy">Learn more</a>
+        <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3"
+            onclick="dismissCookiesBanner(this);">Dismiss</button>
+    </div>
+</div>
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <!-- Unreal Engine -->
+    <div id="unrealengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unreal Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Comments:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5 mb-5">
+                    <li>
+                        Unreal Engine 5.2's Nanite demonstration of rendering 71 million polygons in real-time was quite
+                        impressive.
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit5", Body="<sup>[5]</sup>" }' />
+                        However, Unreal Engine has always had a negative and harsh reputation for requiring high amounts
+                        of file space (for instance, requiring up to 1GB or more for an new empty project).
+                        And it also has a bad reputation for having long compiling times.
+                        Unreal Engine 5.x unfortunately doesn't change any of these negatives, in fact, it arguably
+                        increases them.
+                        That being said, Unreal Engine is arguably one of the powerful game engines out there, even if
+                        it's not the most popular one.
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Examples:</li>
+            <li>
+                <ul class="list-disc list-inside ml-5">
+                    <li class="mb-5">
+                        Video Games
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Fornite</li>
+                            <li>Valorant</li>
+                            <li>Borderlands (series)</li>
+                            <li>Gears of War (series)</li>
+                            <li>Batman (series)</li>
+                            <li>Splinter Cell (series)</li>
+                            <li>Bioshock (series)</li>
+                            <li>Unreal Tournament (series)</li>
+                            <li>ARK</li>
+                            <li>Chivalry (series)</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Cinematic VFX / Rendering
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Mandalorian (TV show)</li>
+                            <li>Matrix 2022 (movie)</li>
+                            <li>Ed Sheeran: Bad Habits (music video)</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Unity -->
+    <div id="unity" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unity</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Comments:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5 mb-5">
+                    <li>
+                        Formerly one of the most popular choices for creating video games, especially among the indie
+                        game development crowd, Unity's user-base has recently had a mass exodus, originating from a
+                        recent debacle concerning its royalty policy.
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit7", Body="<sup>[7]</sup>" }' />
+                        In response to the massive drop in Unity stocks (the Unity CEO has ironically sold a lot of his
+                        own Unity stocks before the royalty policy change was officially announced)
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit8", Body="<sup>[8]</sup>" }' />
+                        some legitimate death threats
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit9", Body="<sup>[9]</sup>" }' />, and said
+                        mass exodus, the royalty policy
+                        was tweaked once again: to include clearer clarifications, to reduce or remove some intentional
+                        limitations, and to increase some perks.
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit10", Body="<sup>[10]</sup>" }' />
+                        The ironic thing is that most of the Unity community has acted like it's the end of the world,
+                        despite the royalty policy only affecting those who have made ~$100,000 in revenue from their
+                        game, and the changed policy wouldn't even take effect until the first day of next year.
+                        Even more ironic is that later in the open letter to the community, the Unity team announced
+                        that none of these changes would even affect those who were still on Unity Personal (free
+                        version).
+                        Additionally, the new royalty fees would only be subject to those who have made revenue in the
+                        past year (12 consecutive months).
+                        However, the damage was unfortunately already done and irreversible.
+                        Many from the Unity community (not me, I stopped using Unity years ago) felt betrayed and
+                        insecure in their choice of game engine, leading many to stop using Unity and seek and migrate
+                        to other game engines.
+                        Even more recently, the Unity company announced the stepping down of their CEO (either of his
+                        own accord or by majority vote of board members).
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { URL="/home/references#cit11", Body="<sup>[11]</sup>" }' />
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Examples:</li>
+            <li>
+                <ul class="list-disc list-inside ml-5 mb-5">
+                    <li class="mb-5">
+                        Video Games
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Among Us</li>
+                            <li>Pokémon GO</li>
+                            <li>Temple Run</li>
+                            <li>Beat Saber</li>
+                            <li>Escape from Tarkov</li>
+                            <li>Battlebit (series)</li>
+                            <li>Hollow Knight</li>
+                            <li>Superhot</li>
+                            <li>Ravensword</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Cinematic VFX / Rendering
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Adam (short video series)</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- CRYENGINE / Amazon Lumberyard -->
+    <div id="cryengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">CRYENGINE / Amazon Lumberyard</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Comments:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5 mb-5">
+                    <li>
+                        While CRYENGINE has created some really cool games, its history is a bit complicated.
+                        It was originally created by a company called Crytek.
+                        However, in 2015, Amazon purchased a license for ~$50 million to be able to legally clone/copy
+                        CRYENGINE source from CryTek.
+                        This act saved CryTek from having to file for bankruptcy.
+                        Then, in 2016, Amazon released its own game engine called Amazon Lumberyard, which was based on
+                        CRYENGINE source.
+                        The confusing part is that CRYENGINE is still being actively developed by Crytek and independent
+                        (to my knowledge) of Amazon Lumberyard.
+                        While this concept may seem a bit confusing, it personally makes sense to me.
+                        Microsoft did the same for Apple back in 1997, when they invested $150 million in Apple shares
+                        to prevent the latter from going bankrupt.
+                        Microsoft later sold those shares back to Apple for $550 million.
+                        Personally, I think people don't like using software that they believe may have the possibility
+                        of going bankrupt again.
+                        To confuse CRYENGINE development even more so, Amazon Lumberyard has its own active fork called
+                        Open 3D Engine (OD3D for short), which was initially created in 2021.
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Examples:</li>
+            <li>
+                <ul class="list-disc list-inside ml-5">
+                    <li class="mb-5">
+                        Video Games
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Far Cry (series, cryengine)</li>
+                            <li>Crysis (series, cryengine)</li>
+                            <li>Sniper (series, cryengine)</li>
+                            <li>Star Citizen (amazon lumberyard)</li>
+                            <li>Prey</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Godot Engine -->
+    <div id="godotengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Godot Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Comments:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5 mb-5">
+                    <li>
+                        Godot's engine development and user-base has grown quite considerably the past couple of years.
+                        Its free and open source nature (it wasn't FOSS in the beginning) has been especially
+                        tantalizing to the indie game development crowd.
+                        Because of this, both Godot and Unity have been unofficial competitive rivals, each vying for
+                        the attention of the average indie game developer.
+                        Unity's recent debacle however, has led many to officially decide to switch from Unity to Godot,
+                        including many prominent and long-term Unity supporters.
+                        Godot, in the past years have also had the support from another well-known FOSS project,
+                        Blender, and have openly supported each other.
+                        While Godot development has always been supported via financial (or engine) contributions, the
+                        financial donations themselves weren't consistent (monthly).
+                        To solve this, last July, the Godot Foundation officially announced a Godot Development Fund
+                        where monthly financial donations could be sent to help with engine development.
+                        In response to the recent debacle pertaining to Unity's' announcement about their changed
+                        royalty policy, the Godot Foundation also made an announcement of their own, stating that they
+                        had reached a milestone of 50,000€ (52,932.50 USD) per month, pledged by members of the
+                        community: that's 600,000€ (635,190.00 USD).
+                        Personally, I think that's pretty impressive, considering that they only began to have
+                        dedicated/consistent monthly donations since July.
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Examples:</li>
+            <li>
+                <ul class="list-disc list-inside ml-5">
+                    <li class="mb-5">
+                        Video Games
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>Human Diaspora</li>
+                            <li>Rogue State Revolution</li>
+                            <li>Circle of Kerzove (WIP)</li>
+                            <li>Pingo Adventure (WIP)</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- And More -->
+    <div id="more">
+        <h3 class="text-2xl font-black mb-5">And More...</h3>
+    </div>
+</div>

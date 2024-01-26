@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "CS296N - Scripting - Homepage";
+}
+
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <!-- Unreal Engine -->
+    <div id="unrealengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unreal Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        C++ <code
+                            class="text-pink-500">(Deprecated HTML5 exports since Unreal Engine 4.24 - Only supported in browsers)</code>
+                    </li>
+                    <li class="mb-5">
+                        JavaScript + WebAssembly
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Blueprints
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Unity -->
+    <div id="unity" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">Unity</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        C#
+                    </li>
+                    <li>
+                        Boo <code class="text-pink-500">(Deprecated since Unity 5)</code>
+                    </li>
+                    <li class="mb-5">
+                        UnityScript <code class="text-pink-500">(Deprecated since Unity 2018.2)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>
+                                Boo
+                            </li>
+                            <li>
+                                JavaScript + WebAssembly
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Bolt <code class="text-pink-500">(First introduced in Unity 2021)</code>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- CRYENGINE / Amazon Lumberyard -->
+    <div id="cryengine" class="mb-10">
+        <h3 class="text-2xl font-black mb-5">CRYENGINE / Amazon Lumberyard</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        LUA
+                    </li>
+                    <li class="mb-5">
+                        C++
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li class="mb-5">
+                        Flow Graph
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- Godot Engine -->
+    <div id="godotengine">
+        <h3 class="text-2xl font-black mb-5">Godot Engine</h3>
+        <ul class="list-inside">
+            <li class="font-black mb-3">Natively Supported API:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        GDScript
+                    </li>
+                    <li>
+                        C#
+                    </li>
+                    <li>
+                        GDNative
+                        <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>
+                                C
+                            </li>
+                            <li>
+                                C++
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        GDExtension
+                        <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
+                        <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                            <li>
+                                C
+                            </li>
+                            <li>
+                                C++
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-5">
+                        JavaScript + WebAssembly
+                        <code class="text-pink-500">(Only supported in browsers)</code>
+                    </li>
+                </ul>
+            </li>
+            <li class="font-black mb-3">Natively Supported Visual Scripting:</li>
+            <li>
+                <ul class="list-disc list-inside text-[rgb(75%,75%,75%)] ml-5">
+                    <li>
+                        Visual Scripting <code class="text-pink-500">(Deprecated since Godot 4.0)</code>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
