@@ -20,7 +20,7 @@ namespace PopularGameEngines.Controllers
         public IActionResult Register() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(BlogViewModel model)
         {
             if (ModelState.IsValid)
             {

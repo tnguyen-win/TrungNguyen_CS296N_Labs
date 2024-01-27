@@ -1,4 +1,4 @@
-@model RegisterViewModel
+@model BlogViewModel
 @{
     ViewBag.Title = "CS296N - Account - Register";
 }
@@ -10,7 +10,12 @@
         <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/account/login", Body="Login" }' />
     </span>
     <h3 class="text-2xl font-black mt-10 mb-5">Create new account</h3>
-    <div class="text-red-500">@Html.ValidationSummary(true)</div>
+    <div class="flex flex-col text-red-500">
+        @Html.ValidationMessage("Name")
+        @Html.ValidationMessage("Username")
+        @Html.ValidationMessage("Password")
+        @Html.ValidationMessage("ConfirmPassword")
+    </div>
     <form action="/account/register" method="post">
         @* Name *@
         <div class="shadow-2xl">
@@ -18,7 +23,7 @@
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Name</span>
                 <input for="Name" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Name"
                     placeholder="Enter a name" />
-            </div>
+            </div>1
             <small>
                 <span class="text-red-500" for="Name"></span>
             </small>

@@ -11,9 +11,12 @@
             model='new HtmlLink { URL="/account/register", Body="Register" }' />
     </span>
     <h3 class="text-2xl font-black mt-10 mb-5">Use existing account</h3>
-    <div class="text-red-500">@Html.ValidationSummary(true)</div>
+    <div class="flex flex-col text-red-500">
+        @Html.ValidationMessage("Username")
+        @Html.ValidationMessage("Password")
+    </div>
     <form action="/account/login?returnUrl=@Model.ReturnUrl" method="post">
-        @* User Name *@
+        @* Username *@
         <div class="shadow-2xl">
             <div class="flex mt-5 mb-3">
                 <span

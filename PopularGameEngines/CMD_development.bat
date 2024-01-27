@@ -2,7 +2,7 @@
 
 echo ----------------
 echo 1 - call dotnet watch run
-echo 2 - [ run PMC commands ]
+echo 2 - [ reset database / migrations ]
 echo 3 - call dotnet test
 echo 10 - call git reset --soft HEAD~1
 echo ----------------
