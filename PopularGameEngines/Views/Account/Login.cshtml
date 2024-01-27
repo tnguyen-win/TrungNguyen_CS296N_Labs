@@ -11,18 +11,18 @@
             model='new HtmlLink { URL="/account/register", Body="Register" }' />
     </span>
     <h3 class="text-2xl font-black mt-10 mb-5">Use existing account</h3>
-    <div class="text-red-500" asp-validation-summary="ModelOnly"></div>
-    <form method="post" asp-action="login" asp-controller="account" asp-route-returnUrl="@Model.ReturnUrl">
+    <div class="text-red-500">@Html.ValidationSummary(true)</div>
+    <form action="/account/login?returnUrl=@Model.ReturnUrl" method="post">
         @* User Name *@
         <div class="shadow-2xl">
             <div class="flex mt-5 mb-3">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Username</span>
-                <input asp-for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                <input for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="Username" placeholder="Enter user's username" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="Username"></span>
+                <span class="text-red-500" for="Username"></span>
             </small>
         </div>
         @* Password *@
@@ -30,18 +30,18 @@
             <div class="flex mt-5 mb-3">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
-                <input asp-for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                <input for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="Password" type="password" placeholder="Enter user's password" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="Password"></span>
+                <span class="text-red-500" for="Password"></span>
             </small>
         </div>
         @* Remember Me *@
         <div class="shadow-2xl mb-10">
             <label
                 class="w-full lg:w-max flex justify-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black select-none hover:cursor-pointer p-3">
-                <input type="checkbox" asp-for="RememberMe" />
+                <input type="checkbox" for="RememberMe" />
                 Remember Me
             </label>
         </div>

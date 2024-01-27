@@ -10,17 +10,17 @@
         <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/account/login", Body="Login" }' />
     </span>
     <h3 class="text-2xl font-black mt-10 mb-5">Create new account</h3>
-    <div class="text-red-500" asp-validation-summary="ModelOnly"></div>
+    <div class="text-red-500">@Html.ValidationSummary(true)</div>
     <form action="/account/register" method="post">
         @* Name *@
         <div class="shadow-2xl">
             <div class="flex mt-5 mb-3">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Name</span>
-                <input asp-for="Name" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Name"
+                <input for="Name" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Name"
                     placeholder="Enter a name" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="Name"></span>
+                <span class="text-red-500" for="Name"></span>
             </small>
         </div>
         @* Username *@
@@ -28,11 +28,11 @@
             <div class="flex mt-5 mb-3">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Username</span>
-                <input asp-for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                <input for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="Username" placeholder="Enter a username" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="Username"></span>
+                <span class="text-red-500" for="Username"></span>
             </small>
         </div>
         @* Password *@
@@ -40,11 +40,11 @@
             <div class="flex mt-5 mb-3">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
-                <input asp-for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                <input for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="Password" type="password" placeholder="Enter a password" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="Password"></span>
+                <span class="text-red-500" for="Password"></span>
             </small>
         </div>
         @* Confirm Password *@
@@ -52,11 +52,11 @@
             <div class="flex mt-5 mb-3">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Confirm<br />Password</span>
-                <input asp-for="ConfirmPassword" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                <input for="ConfirmPassword" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="ConfirmPassword" type="password" placeholder="Re-enter the password" />
             </div>
             <small>
-                <span class="text-red-500" asp-validation-for="ConfirmPassword"></span>
+                <span class="text-red-500" for="ConfirmPassword"></span>
             </small>
         </div>
         <div class="flex flex-col items-center gap-3">
