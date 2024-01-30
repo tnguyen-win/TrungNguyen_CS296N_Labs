@@ -15,7 +15,7 @@
         @Html.ValidationMessage("Username")
         @Html.ValidationMessage("Password")
     </div>
-    <form action="/account/login?returnUrl=@Model.ReturnUrl" method="post">
+    <form action='/account/login?returnUrl=@(Model.ReturnUrl != "" ? Model.ReturnUrl : "/")' method="post">
         @* Username *@
         <div class="shadow-2xl">
             <div class="flex mt-5 mb-3">
