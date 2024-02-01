@@ -14,13 +14,13 @@ namespace PopularGameEngines.Controllers
             Questions = new Dictionary<int, string>();
             Answers = new Dictionary<int, string>();
             Questions[1] = "Are game engines required to create a video game?";
-            Answers[1] = "No";
+            Answers[1] = "no";
             Questions[2] = "Do all game engines have a editor?";
-            Answers[2] = "Some";
+            Answers[2] = "some";
             Questions[3] = "What programming language is usually used in video games to help maintain high game performance?";
-            Answers[3] = "C++";
+            Answers[3] = "c++";
             Questions[4] = "What game engine recently had a dramatic debacle? (Fired CEO, mass exodus of users, plummeting of company stocks, credible death threats, etc.)";
-            Answers[4] = "Unity";
+            Answers[4] = "unity";
         }
 
         public IActionResult Index()
@@ -68,7 +68,7 @@ namespace PopularGameEngines.Controllers
             {
                 int key = question.Key;
 
-                model.Results[key] = model.Answers[key] == model.UserAnswers[key];
+                model.Results[key] = model.Answers[key] == (model.UserAnswers[key] == null ? model.UserAnswers[key] : model.UserAnswers[key].ToLower());
             }
 
             return model;

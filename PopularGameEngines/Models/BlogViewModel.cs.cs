@@ -2,22 +2,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PopularGameEngines.Models
 {
-    public class RegisterViewModel
+    public class BlogViewModel
     {
-        [Required(ErrorMessage = "Please enter a real name.")]
+        [Required(ErrorMessage = "The Name field is required.")]
         [StringLength(255)]
         public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Please enter a username.")]
+        [Required(ErrorMessage = "The Username field is required.")]
         [StringLength(255)]
         public string Username { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Please enter a password.")]
+        [Required(ErrorMessage = "The Password field is required.")]
         [DataType(DataType.Password)]
         [Compare("ConfirmPassword")]
         public string Password { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Please confirm your password.")]
+        [Required(ErrorMessage = "The Confirm Password field is required.")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; } = string.Empty;

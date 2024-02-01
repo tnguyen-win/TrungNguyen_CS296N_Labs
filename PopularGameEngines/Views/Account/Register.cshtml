@@ -1,64 +1,76 @@
-@model RegisterViewModel
+@model BlogViewModel
 @{
-    ViewData["Title"] = "CS296N - Account - Register";
+    ViewBag.Title = "CS296N - Account - Register";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
-    <h3 class="text-2xl font-black mb-10">Existing Account</h3>
-    <div class="flex text-center lg:text-start mb-10">
-        <a class="w-full lg:w-max border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] p-3"
-            href="login">Log In </a>
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
+    <h3 class="text-2xl font-black mb-5">Use existing account</h3>
+    <span class="p-3 ps-0">
+        <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/account/login", Body="Login" }' />
+    </span>
+    <h3 class="text-2xl font-black mt-10 mb-5">Create new account</h3>
+    <div class="flex flex-col text-red-500">
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessage("Name")
+        @Html.ValidationMessage("Username")
+        @Html.ValidationMessage("Password")
+        @Html.ValidationMessage("ConfirmPassword")
     </div>
-    <h3 class="text-2xl font-black mt-10 mb-5">New Account</h3>
-    <form method="post" asp-action="Register">
+    <form action="/account/register" method="post">
         @* Name *@
-        <div class="shadow-2xl mb-10">
-            <label class="font-black" for="name">Real name</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Name</span>
-                <input for="name" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="name"
-                    placeholder="Type here..." />
+        <div class="shadow-2xl">
+            <div class="flex mt-5 mb-3">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Name</span>
+                <input for="Name" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Name"
+                    placeholder="Enter a name" />
             </div>
+            <small>
+                <span class="text-red-500" for="Name"></span>
+            </small>
         </div>
-        @* UserName *@
-        <div class="shadow-2xl mb-10">
-            <label class="font-black" for="username">Nickname</label>
-            <div class="flex flex-col my-5">
+        @* Username *@
+        <div class="shadow-2xl my-5">
+            <div class="flex mt-5 mb-3">
                 <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">User
-                    Name</span>
-                <input for="username" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="username"
-                    placeholder="Type here..." />
+                    class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Username</span>
+                <input for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="Username" placeholder="Enter a username" />
             </div>
+            <small>
+                <span class="text-red-500" for="Username"></span>
+            </small>
         </div>
         @* Password *@
-        <div class="shadow-2xl mb-10">
-            <label class="font-black" for="password-initial">Password</label>
-            <div class="flex flex-col my-5">
+        <div class="shadow-2xl">
+            <div class="flex mt-5 mb-3">
                 <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
-                <input for="password-initial" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
-                    name="password-initial" type="password" placeholder="Type here..." />
+                    class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
+                <input for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="Password" type="password" placeholder="Enter a password" />
             </div>
+            <small>
+                <span class="text-red-500" for="Password"></span>
+            </small>
         </div>
         @* Confirm Password *@
         <div class="shadow-2xl mb-10">
-            <label class="font-black" for="password-confirm">Confirm password</label>
-            <div class="flex flex-col my-5">
+            <div class="flex mt-5 mb-3">
                 <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Confirm
-                    Password</span>
-                <input for="password-confirm" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
-                    name="password-confirm" type="password" placeholder="Type here..." />
+                    class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Confirm<br />Password</span>
+                <input for="ConfirmPassword" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="ConfirmPassword" type="password" placeholder="Re-enter the password" />
             </div>
+            <small>
+                <span class="text-red-500" for="ConfirmPassword"></span>
+            </small>
         </div>
         <div class="flex flex-col items-center gap-3">
             <div class="w-full flex flex-col lg:flex-row text-center lg:text-start gap-3">
                 <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3" type="submit">Register</button>
-                <a class="border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] p-3"
-                    href="/">Cancel</a>
+                <span class="p-3">
+                    <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/", Body="Cancel" }' />
+                </span>
             </div>
         </div>
     </form>

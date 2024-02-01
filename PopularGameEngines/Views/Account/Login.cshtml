@@ -1,10 +1,61 @@
+@model LoginViewModel
 @{
-    ViewData["Title"] = "CS296N - Account - Login";
+    ViewBag.Title = "CS296N - Account - Login";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
-    <div class="text-[rgb(75%,75%,75%)]">
-        WIP
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
+    <h3 class="text-2xl font-black mb-5">Create new account</h3>
+    <span class="p-3 ps-0">
+        <partial name="~/views/shared/htmllink.cshtml"
+            model='new HtmlLink { URL="/account/register", Body="Register" }' />
+    </span>
+    <h3 class="text-2xl font-black mt-10 mb-5">Use existing account</h3>
+    <div class="flex flex-col text-red-500">
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessage("Username")
+        @Html.ValidationMessage("Password")
     </div>
+    <form action='/account/login?returnUrl=@(Model.ReturnUrl != "" ? Model.ReturnUrl : "/")' method="post">
+        @* Username *@
+        <div class="shadow-2xl">
+            <div class="flex mt-5 mb-3">
+                <span
+                    class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Username</span>
+                <input for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="Username" placeholder="Enter user's username" />
+            </div>
+            <small>
+                <span class="text-red-500" for="Username"></span>
+            </small>
+        </div>
+        @* Password *@
+        <div class="shadow-2xl mb-5">
+            <div class="flex mt-5 mb-3">
+                <span
+                    class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
+                <input for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="Password" type="password" placeholder="Enter user's password" />
+            </div>
+            <small>
+                <span class="text-red-500" for="Password"></span>
+            </small>
+        </div>
+        @* Remember Me *@
+        <div class="shadow-2xl mb-10">
+            <label
+                class="w-full lg:w-max flex justify-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black select-none hover:cursor-pointer p-3">
+                <input type="checkbox" for="RememberMe" />
+                Remember Me
+            </label>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+            <div class="w-full flex flex-col lg:flex-row text-center lg:text-start gap-3">
+                <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3" type="submit">Login</button>
+                <span class="p-3">
+                    <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/", Body="Cancel" }' />
+                </span>
+            </div>
+        </div>
+    </form>
 </div>

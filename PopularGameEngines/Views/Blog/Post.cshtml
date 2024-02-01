@@ -1,45 +1,39 @@
 ﻿@model Message
 @{
-    ViewData["Title"] = "CS296N - Blog - Post";
+    ViewBag.Title = "CS296N - Blog - Post";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <form method="post">
         @* Title *@
         <div class="shadow-2xl">
-            <label class="font-black" for="title">Post description</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Title</span>
-                <input id="title" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Title"
-                    placeholder="Type here..." />
+            <div class="flex my-5">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Title</span>
+                <input id="title" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Title"
+                    placeholder="Enter post description" />
             </div>
         </div>
         @* Body *@
-        <div class="shadow-2xl my-10">
-            <label class="font-black" for="body">Post message</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Body</span>
-                <input id="body" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Body"
-                    placeholder="Type here..." />
+        <div class="shadow-2xl my-5">
+            <div class="flex my-5">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Body</span>
+                <input id="body" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Body"
+                    placeholder="Enter post message" />
             </div>
         </div>
         @* Author *@
         <div class="shadow-2xl mb-10">
-            <label class="font-black" for="author">Post sender</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
-                <input id="author" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="From.Name"
-                    placeholder="Type here..." />
+            <div class="flex my-5">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
+                <input id="author" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="From.Name"
+                    placeholder="Enter post sender" />
             </div>
         </div>
         @* Submit *@
         <div class="flex text-center lg:text-start mb-10">
             <input class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
-                type="submit" value="Submit post" />
+                type="submit" value="Submit Post" />
         </div>
     </form>
 </div>

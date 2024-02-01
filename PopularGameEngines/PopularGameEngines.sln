@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopularGameEngines", "PopularGameEngines.csproj", "{1D6ABCFD-95B2-4BF9-AA5B-4153ADC59EA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineTests", "..\GameEngineTests\GameEngineTests.csproj", "{10E7A4D1-331B-4C8A-9377-B767C01B0DC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

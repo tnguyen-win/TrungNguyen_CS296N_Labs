@@ -1,20 +1,22 @@
 ﻿@model HtmlLink
 @{
-    ViewData["Title"] = "CS296N - Home - Homepage";
+    ViewBag.Title = "CS296N - Home - Homepage";
 }
 
 <div
     class="z-20 fixed bottom-0 flex flex-col lg:flex-row items-center justify-center gap-5 bg-[rgb(10%,10%,10%)] text-[rgb(75%,75%,75%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl container mx-auto lg:mb-5 p-4">
     This site uses cookies.
     <div>
-        <a class="text-white border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] p-3"
-            href="/home/privacy">Learn more</a>
         <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3"
             onclick="dismissCookiesBanner(this);">Dismiss</button>
+        <span class="p-3">
+            <partial name="~/views/shared/htmllink.cshtml"
+                model='new HtmlLink { URL="/home/privacy", Body="Learn More" }' />
+        </span>
     </div>
 </div>
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <!-- Unreal Engine -->
     <div id="unrealengine" class="mb-10">
         <h3 class="text-2xl font-black mb-5">Unreal Engine</h3>

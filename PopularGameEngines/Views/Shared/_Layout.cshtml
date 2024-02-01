@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Popular Game Engines</title>
+    <title>@ViewBag.Title - Popular Game Engines</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <style>
         /* Prevent flickering on page switching */
         :root {
@@ -17,10 +17,12 @@
             color: white;
         }
     </style>
-    <script src="~/lib/tailwindcss/tailwindcss_341.js" asp-append-version="true"></script>
+    <script src="~/lib/tailwindcss/tailwindcss_341.js"></script>
 </head>
 
 <body class="bg-[rgb(33,37,41)] text-white">
+    @using Microsoft.AspNetCore.Identity
+
     @* Navbar *@
     <header class="z-40 sticky top-0 start-0 bg-inherit shadow-2xl">
         <nav id="eMobileBorder" class="lg:border-b-[1px] border-[rgb(25%,25%,25%)]">
@@ -105,14 +107,25 @@
                 @* Navbar - Right *@
                 <div class="flex lg:flex flex-col lg:flex-row flex-col-reverse">
                     <div class="eMobiles hidden lg:flex flex-col lg:flex-row justify-center gap-3">
-                        <a class="flex items-center justify-center text-sm text-[rgb(75%,75%,75%)] lg:hover:text-white p-6 lg:px-4"
-                            href="/account/register">
-                            Register
-                        </a>
-                        <a class="flex items-center justify-center text-sm bg-cyan-400 hover:bg-cyan-300 text-black p-6 lg:px-4"
-                            href="/account/login">
-                            Login
-                        </a>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <form class="flex items-center justify-center gap-5" action="/account/logout" method="post">
+                                <div>Welcome back ( <span class="text-yellow-500">@User.Identity.Name</span> )</div>
+                                <input class="flex items-center justify-center text-sm bg-cyan-400 hover:bg-cyan-300 text-black
+                        hover:cursor-pointer p-6 lg:px-4" type="submit" value="Logout" />
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="flex items-center justify-center text-sm text-[rgb(75%,75%,75%)] lg:hover:text-white p-6 lg:px-4"
+                                href="/account/register">
+                                Register
+                            </a>
+                            <a class="flex items-center justify-center text-sm bg-cyan-400 hover:bg-cyan-300 text-black select-none p-6 lg:px-4"
+                                href="/account/login">
+                                Login
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
@@ -145,8 +158,8 @@
             </svg>
         </button>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

@@ -2,7 +2,7 @@
 
 namespace PopularGameEngines.Data
 {
-    public class FakeRegistryRepository : IRegistryRepository
+    public class FakeBlogRepository : IBlogRepository
     {
         readonly List<Message> messages = new();
 

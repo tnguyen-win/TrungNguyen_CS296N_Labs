@@ -1,37 +1,34 @@
 ﻿@model List<Message>
 @{
-    ViewData["Title"] = "CS296N - Blog - Homepage";
+    ViewBag.Title = "CS296N - Blog - Homepage";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewData["Title"]</h1>
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <form method="post">
         @* Author *@
-        <div class="shadow-2xl mb-10">
-            <label class="font-black" for="author">Post sender</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
-                <input for="author" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="author"
-                    placeholder="Type here..." />
+        <div class="shadow-2xl">
+            <div class="flex my-5">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
+                <input for="author" class="w-full w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="author" placeholder="Enter post sender" />
             </div>
         </div>
         @* Date *@
-        <div class="shadow-2xl mb-10">
-            <label class="font-black" for="date">Last updated</label>
-            <div class="flex flex-col my-5">
-                <span
-                    class="w-max rounded-t-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-b-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
-                <input for="date" class="bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
-                    placeholder="Type here..." />
+        <div class="shadow-2xl mt-5 mb-10">
+            <div class="flex my-5">
+                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
+                <input for="date" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
+                    placeholder="Enter post submission date" />
             </div>
         </div>
         <div class="flex flex-col lg:flex-row text-center gap-3">
             <input class="bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
                 value="Filter" />
-            <a class="border-[1px] border-[rgb(37.5%,37.5%,37.5%)] hover:border-[rgb(50%,50%,50%)] hover:cursor-pointer p-3"
-                href="/blog">Reset
-                Filter</a>
+            <span class="p-3">
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { URL="/blog", Body="Reset Filter" }' />
+            </span>
         </div>
     </form>
     @if (@Model != null)
@@ -67,7 +64,7 @@
         </ul>
     }
     <div class="flex text-center lg:text-start mb-10">
-        <a class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3"
-            href="/blog/post">Create post</a>
+        <a class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black select-none hover:cursor-pointer p-3"
+            href="/blog/post">Create Post</a>
     </div>
 </div>
