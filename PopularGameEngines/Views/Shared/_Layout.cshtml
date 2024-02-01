@@ -24,11 +24,11 @@
     @using Microsoft.AspNetCore.Identity
 
     @* Navbar *@
-    <header class="z-40 sticky top-0 start-0 bg-inherit shadow-2xl">
+    <header class="z-40 sticky top-0 start-0 bg-inherit text-[rgb(75%,75%,75%)] shadow-2xl">
         <nav id="eMobileBorder" class="lg:border-b-[1px] border-[rgb(25%,25%,25%)]">
             <div class="lg:h-16 flex flex-col lg:flex-row lg:container lg:mx-auto">
                 @* Navbar - Left *@
-                <div class="flex flex-col lg:flex-row text-[rgb(75%,75%,75%)] lg:me-auto">
+                <div class="flex flex-col lg:flex-row lg:me-auto">
                     <div class="h-16 flex items-center border-b-[1px] border-[rgb(25%,25%,25%)] lg:border-0">
                         <a class="flex items-center font-black text-xl text-cyan-400 hover:text-cyan-300 p-6 lg:px-4"
                             href="/">
@@ -68,44 +68,38 @@
                             <ul
                                 class="eMobiles hidden lg:group-focus-within:block lg:group-focus-within:hidden lg:group-hover:block lg:absolute lg:top-full lg:w-[200%] lg:start-[-50%] lg:bg-[rgb(10%,10%,10%)] lg:shadow-2xl">
                                 <li>
-                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
-                                        href="/home/overview">
-                                        Overview
-                                    </a>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLink { Navlink=true, Dropdown=true, URL="/home/overview", Body="Overview" }' />
                                 </li>
                                 <li>
-                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
-                                        href="/">
-                                        Homepage
-                                    </a>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLink { Navlink=true, Dropdown=true, URL="/", Body="Homepage" }' />
                                 </li>
                                 <li>
-                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
-                                        href="/home/references">
-                                        References
-                                    </a>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLink { Navlink=true, Dropdown=true, URL="/home/references", Body="References" }' />
                                 </li>
                                 <li>
-                                    <a class="flex items-center text-sm lg:hover:text-cyan-300 lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-cyan-300 p-6 lg:px-4"
-                                        href="/home/privacy">
-                                        Privacy
-                                    </a>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLink { Navlink=true, Dropdown=true, URL="/home/privacy", Body="Privacy" }' />
                                 </li>
                             </ul>
                         </div>
-                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/blog">
-                            Blog
-                        </a>
-                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/scripting">
-                            Scripting
-                        </a>
-                        <a class="flex items-center text-sm lg:hover:text-white p-6 lg:px-4" href="/quiz">
-                            Quiz
-                        </a>
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { Navlink=true, URL="/blog", Body="Blog" }' />
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { Navlink=true, URL="/scripting", Body="Scripting" }' />
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLink { Navlink=true, URL="/quiz", Body="Quiz" }' />
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Navlink=true, URL="/user", Body="Admin" }' />
+                        }
                     </div>
                 </div>
                 @* Navbar - Right *@
-                <div class="flex lg:flex flex-col lg:flex-row flex-col-reverse">
+                <div class="flex lg:flex flex-col lg:flex-row flex-col-reverse mt-10 lg:mt-0">
                     <div class="eMobiles hidden lg:flex flex-col lg:flex-row justify-center gap-3">
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
@@ -117,14 +111,10 @@
                         }
                         else
                         {
-                            <a class="flex items-center justify-center text-sm text-[rgb(75%,75%,75%)] lg:hover:text-white p-6 lg:px-4"
-                                href="/account/register">
-                                Register
-                            </a>
-                            <a class="flex items-center justify-center text-sm bg-cyan-400 hover:bg-cyan-300 text-black select-none p-6 lg:px-4"
-                                href="/account/login">
-                                Login
-                            </a>
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Navlink=true, URL="/account/register", Body="Register" }' />
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Navlink=true, URL="/account/login", Body="Login" }' />
                         }
                     </div>
                 </div>
