@@ -2,8 +2,9 @@
 
 echo ----------------
 echo 1 - call dotnet watch run
-echo 2 - [ reset database / migrations ]
-echo 3 - call dotnet test
+echo 2 - [ local - reset database / migrations ]
+echo 3 - [ remote - reset database / migrations ]
+echo 4 - call dotnet test
 echo 10 - call git reset --soft HEAD~1
 echo ----------------
 
@@ -26,6 +27,10 @@ if %input% == 2 (
 )
 
 if %input% == 3 (
+    call dotnet ef database update --connection "server=MYSQL5048.site4now.net;port=3306;user=aa4c8e_engines;password=Secret!123;database=db_aa4c8e_engines;"
+)
+
+if %input% == 4 (
     call dotnet test
 )
 
