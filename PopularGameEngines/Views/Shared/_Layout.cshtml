@@ -9,12 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="~/css/site.css" />
     <style>
-        /* Prevent flickering on page switching */
         :root {
+            /* Prevent flickering on page switching */
             background-color: rgb(33, 37, 41);
             color: white;
+            font-family: 'Inter';
+        }
+
+        .shadow-hack {
+            /* Flip vertical direction	*/
+            --tw-shadow: 0 -25px 50px -12px rgb(0 0 0 / 0.25);
+            --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
         }
     </style>
     <script src="~/lib/tailwindcss/tailwindcss_341.js"></script>
@@ -148,8 +157,53 @@
             </svg>
         </button>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js"></script>
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    <script>
+        // https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+
+        const eMobileBorder = document.getElementById('eMobileBorder');
+        const eMobiles = document.getElementsByClassName('eMobiles');
+        const eMobileButton = document.getElementById('eMobileButton');
+
+        function toggleMobile() {
+            Array.from(eMobiles).forEach(e => e.classList.contains('hidden') ? (eMobileBorder.classList.add('border-b-[1px]'), e.classList.remove('hidden'), (eMobileButton.children[0].classList.add('hidden'), eMobileButton.children[1].classList.remove('hidden'))) : (e.classList.add('hidden'), (eMobileBorder.classList.remove('border-b-[1px]'), eMobileButton.children[0].classList.remove('hidden'), eMobileButton.children[1].classList.add('hidden'))));
+        }
+
+        function resetMobile() {
+            Array.from(eMobiles).forEach(e => window.matchMedia('(min-width: 1024px)') ? (eMobileBorder.classList.remove('border-b-[1px]'), e.classList.add('hidden'), eMobileButton.children[0].classList.remove('hidden'), eMobileButton.children[1].classList.add('hidden')) : {});
+        }
+
+        function dismissCookiesBanner(e) {
+            e.parentElement.parentElement.classList.add('hidden');
+        }
+
+        function checkScroll() {
+            const eBtn = document.getElementById('buttonScrollToTop');
+            let classes = [];
+
+            classes = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 ? ['invisible', 'visible'] : ['visible', 'invisible'];
+
+            eBtn.classList.replace(classes[0], classes[1]);
+        }
+
+        function scrollToTop() {
+            document.body.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+            document.documentElement.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('load', checkScroll);
+        window.addEventListener('resize', resetMobile);
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('touchmove', checkScroll);
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
