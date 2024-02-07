@@ -8,7 +8,7 @@ namespace PopularGameEngines.Models
 
         public string? Body { get; set; }
 
-        public AppUser? From { get; set; }
+        public AppUser From { get; set; } = new AppUser();
 
         public DateOnly Date { get; set; }
 

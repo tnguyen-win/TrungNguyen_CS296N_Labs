@@ -11,8 +11,8 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240126174933_InitialMySQL")]
-    partial class InitialMySQL
+    [Migration("20240207190513_Identity")]
+    partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -232,6 +232,7 @@ namespace PopularGameEngines.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("FromId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("Rating")
@@ -312,7 +313,9 @@ namespace PopularGameEngines.Migrations
                 {
                     b.HasOne("PopularGameEngines.Models.AppUser", "From")
                         .WithMany()
-                        .HasForeignKey("FromId");
+                        .HasForeignKey("FromId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("From");
                 });
