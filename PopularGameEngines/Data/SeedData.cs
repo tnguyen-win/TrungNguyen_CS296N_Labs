@@ -11,11 +11,20 @@ namespace PopularGameEngines
             if (context.Messages != null && !context.Messages.Any())
             {
                 var userManager = provider.GetRequiredService<UserManager<AppUser>>();
+                var roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
+                const string ROLE = "Admin";
+                const string SECRET_PASSWORD = "Secret!123";
+                bool isSuccess = true;
+
+                if (roleManager.FindByNameAsync(ROLE).Result == null) isSuccess = roleManager.CreateAsync(new IdentityRole(ROLE)).Result.Succeeded;
+
                 var user1 = new AppUser { Name = "John Smith", UserName = "John" };
                 var user2 = new AppUser { Name = "Jane Doe", UserName = "Jane" };
-                const string SECRET_PASSWORD = "Secret!123";
 
-                bool isSuccess = userManager.CreateAsync(user1, SECRET_PASSWORD).Result.Succeeded;
+                isSuccess &= userManager.CreateAsync(user1, SECRET_PASSWORD).Result.Succeeded;
+
+                if (isSuccess) isSuccess &= userManager.AddToRoleAsync(user1, ROLE).Result.Succeeded;
+
                 isSuccess &= userManager.CreateAsync(user2, SECRET_PASSWORD).Result.Succeeded;
 
                 if (isSuccess)

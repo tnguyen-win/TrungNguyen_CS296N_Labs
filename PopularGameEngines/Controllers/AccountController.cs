@@ -16,11 +16,10 @@ namespace PopularGameEngines.Controllers
             signInManager = signInMgr;
         }
 
-        [HttpGet]
         public IActionResult Register() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Register(BlogViewModel model)
+        public async Task<IActionResult> Register(RegisterVM model)
         {
             if (ModelState.IsValid)
             {
@@ -37,13 +36,13 @@ namespace PopularGameEngines.Controllers
         [HttpGet]
         public IActionResult LogIn(string returnURL = "")
         {
-            var model = new LoginViewModel { ReturnUrl = returnURL };
+            var model = new LoginVM { ReturnUrl = returnURL };
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginViewModel model)
+        public async Task<IActionResult> LogIn(LoginVM model)
         {
             if (ModelState.IsValid)
             {

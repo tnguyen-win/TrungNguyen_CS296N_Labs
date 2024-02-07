@@ -1,6 +1,6 @@
 namespace PopularGameEngines.Models
 {
-    public class LoginViewModel
+    public class LoginVM
     {
         public string Username { get; set; } = string.Empty;
 

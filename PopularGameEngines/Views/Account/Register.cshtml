@@ -1,4 +1,4 @@
-@model BlogViewModel
+@model RegisterVM
 @{
     ViewBag.Title = "CS296N - Account - Register";
 }
@@ -9,15 +9,11 @@
     <span class="p-3 ps-0">
         <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/account/login", Body="Login" }' />
     </span>
-    <h3 class="text-2xl font-black mt-10 mb-5">Create new account</h3>
-    <div class="flex flex-col text-red-500">
+    <h3 class="text-2xl font-black mt-10">Create new account</h3>
+    <div class="flex flex-col text-red-500 mt-3">
         @Html.ValidationSummary(true)
-        @Html.ValidationMessage("Name")
-        @Html.ValidationMessage("Username")
-        @Html.ValidationMessage("Password")
-        @Html.ValidationMessage("ConfirmPassword")
     </div>
-    <form action="/account/register" method="post">
+    <form method="post">
         @* Name *@
         <div class="shadow-2xl">
             <div class="flex mt-5 mb-3">
@@ -26,7 +22,9 @@
                     placeholder="Enter a name" />
             </div>
             <small>
-                <span class="text-red-500" for="Name"></span>
+                <span class="text-red-500" for="Name">
+                    @Html.ValidationMessage("Name")
+                </span>
             </small>
         </div>
         @* Username *@
@@ -38,7 +36,9 @@
                     name="Username" placeholder="Enter a username" />
             </div>
             <small>
-                <span class="text-red-500" for="Username"></span>
+                <span class="text-red-500" for="Username">
+                    @Html.ValidationMessage("Username")
+                </span>
             </small>
         </div>
         @* Password *@
@@ -50,7 +50,9 @@
                     name="Password" type="password" placeholder="Enter a password" />
             </div>
             <small>
-                <span class="text-red-500" for="Password"></span>
+                <span class="text-red-500" for="Password">
+                    @Html.ValidationMessage("Password")
+                </span>
             </small>
         </div>
         @* Confirm Password *@
@@ -62,7 +64,9 @@
                     name="ConfirmPassword" type="password" placeholder="Re-enter the password" />
             </div>
             <small>
-                <span class="text-red-500" for="ConfirmPassword"></span>
+                <span class="text-red-500" for="ConfirmPassword">
+                    @Html.ValidationMessage("ConfirmPassword")
+                </span>
             </small>
         </div>
         <div class="flex flex-col items-center gap-3">
