@@ -5,18 +5,19 @@ namespace PopularGameEngines.Data
 {
     public class BlogRepository : IBlogRepository
     {
-        readonly AppDbContext context;
-        public BlogRepository(AppDbContext c) => context = c;
+        readonly AppDbContext _context;
 
-        public Message GetMessageById(int id) => throw new NotImplementedException();
+        public BlogRepository(AppDbContext c) => _context = c;
 
-        public List<Message> GetMessages() => context.Messages != null ? context.Messages.Include(m => m.From).ToList() : new List<Message>();
+        public async Task<Message> GetMessageByIdAsync(int id) => await _context.Messages.FindAsync(id);
 
-        public int StoreMessage(Message message)
+        public List<Message> GetMessages() => _context.Messages != null ? _context.Messages.Include(m => m.From).ToList() : new List<Message>();
+
+        public async Task<int> StoreMessageAsync(Message message)
         {
-            context.Add(message);
+            await _context.AddAsync(message);
 
-            return context.SaveChanges();
+            return _context.SaveChanges();
         }
     }
 }

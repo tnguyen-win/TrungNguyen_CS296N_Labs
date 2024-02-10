@@ -3,7 +3,8 @@
 echo ----------------
 echo 1 - call dotnet watch run
 echo 2 - [ local - reset and update database / migrations ]
-echo 3 - call dotnet test
+echo 3 - call dotnet build
+echo 4 - call dotnet test
 echo 8 - [ remote - update database ]
 echo 10 - call git reset --soft HEAD~1
 echo ----------------
@@ -27,6 +28,10 @@ if %input% == 2 (
 )
 
 if %input% == 3 (
+    call dotnet build
+)
+
+if %input% == 4 (
     call dotnet test
 )
 

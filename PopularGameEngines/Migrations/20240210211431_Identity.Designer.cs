@@ -11,7 +11,7 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240207190513_Identity")]
+    [Migration("20240210211431_Identity")]
     partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

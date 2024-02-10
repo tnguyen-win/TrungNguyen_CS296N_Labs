@@ -1,2 +1,44 @@
-<a class='@(@Model.Navlink ? @Model.Dropdown ? "flex items-center justify-center text-sm text-[rgb(75%,75%,75%)] hover:text-white lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-[rgb(50%,50%,50%)] p-6 lg:px-4" : "flex items-center text-sm hover:text-white p-6 lg:px-4" : "text-cyan-400 hover:text-cyan-300")'
-    href=@Model.URL>@Html.Raw(@Model.Body)</a>
+@{
+    string c = "";
+    const string colorDefault = "text-cyan-400 hover:text-cyan-300";
+    const string class1 = $"flex items-center {colorDefault} p-3";
+
+    switch (@Model.Type)
+    {
+        case "brand":
+            c = $"flex items-center font-black text-xl {colorDefault} p-6 lg:px-4";
+            break;
+        case "navlink":
+            c = "flex items-center hover:text-white p-6 lg:px-4";
+            break;
+        case "dropdown":
+            c = "flex items-center hover:text-white lg:border-[1px] lg:border-[rgb(25%,25%,25%)] lg:hover:border-[rgb(50%,50%,50%)] p-6 lg:px-4";
+            break;
+        case "dialog":
+            c = $"{class1}";
+            break;
+        case "blog-1":
+            c = $"{class1}";
+            break;
+        case "blog-2":
+            c = $"w-max flex items-center {colorDefault} -ms-3 p-3";
+            break;
+        case "login-1":
+            c = $"w-max flex items-center {colorDefault} -ms-3 p-3";
+            break;
+        case "login-2":
+            c = $"{class1}";
+            break;
+        case "user":
+            c = $"w-max flex items-center {colorDefault} -ms-3 p-3";
+            break;
+        case "footer":
+            c = $"flex items-center {colorDefault} -m-3 p-3";
+            break;
+        default:
+            c = $"{colorDefault} -m-3 p-3";
+            break;
+    }
+}
+
+<a class="@(c ?? c)" href=@Model.URL>@Html.Raw(@Model.Body)</a>

@@ -13,7 +13,7 @@ namespace GameEngineTests {
                 Body = "This is a test"
             };
 
-            controller.Post(model);
+            controller.Post(model).Wait();
 
             Assert.True(model.MessageId > 0);
             Assert.Equal(model.Date.ToShortDateString(), DateTime.Now.ToShortDateString());

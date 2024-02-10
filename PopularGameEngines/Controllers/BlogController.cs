@@ -9,21 +9,21 @@ namespace PopularGameEngines.Controllers
     public class BlogController : Controller
     {
         //readonly AppDbContext context;
-        readonly IBlogRepository repository;
+        readonly IBlogRepository _repository;
 
-        readonly UserManager<AppUser> userManager;
+        readonly UserManager<AppUser> _userManager;
 
         public BlogController(IBlogRepository r, UserManager<AppUser> u)
         {
-            repository = r;
-            userManager = u;
+            _repository = r;
+            _userManager = u;
         }
 
         // Message(s)
 
         public IActionResult Index()
         {
-            var messages = repository.GetMessages();
+            var messages = _repository.GetMessages();
 
             return View(messages);
         }
@@ -31,14 +31,14 @@ namespace PopularGameEngines.Controllers
         [HttpPost]
         public IActionResult Index(string author, string date)
         {
-            List<Message> messages = (from m in repository.GetMessages() select m).ToList();
+            List<Message> messages = (from m in _repository.GetMessages() select m).ToList();
 
             // Author + Date
             if (author != null & date != null)
             {
                 var matchFound = false;
 
-                foreach (var m in repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
+                foreach (var m in _repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
 
                 try
                 {
@@ -48,14 +48,14 @@ namespace PopularGameEngines.Controllers
 
                         if (matchFound)
                         {
-                            messages = (from m in repository.GetMessages()
+                            messages = (from m in _repository.GetMessages()
                                         where m.From != null && m.From.Name == author
                                         & m.Date == convertedDate
                                         select m).ToList();
                         }
                         else
                         {
-                            messages = (from m in repository.GetMessages()
+                            messages = (from m in _repository.GetMessages()
                                         where m.Date == convertedDate
                                         select m).ToList();
                         }
@@ -65,7 +65,7 @@ namespace PopularGameEngines.Controllers
                 {
                     if (matchFound)
                     {
-                        messages = (from m in repository.GetMessages()
+                        messages = (from m in _repository.GetMessages()
                                     where m.From != null && m.From.Name == author
                                     select m).ToList();
                     }
@@ -77,11 +77,11 @@ namespace PopularGameEngines.Controllers
             {
                 var matchFound = false;
 
-                foreach (var m in repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
+                foreach (var m in _repository.GetMessages()) if (m.From != null && m.From.Name == author) matchFound = true;
 
                 if (matchFound)
                 {
-                    messages = (from m in repository.GetMessages()
+                    messages = (from m in _repository.GetMessages()
                                 where m.From != null && m.From.Name == author
                                 select m).ToList();
                 }
@@ -96,7 +96,7 @@ namespace PopularGameEngines.Controllers
                     {
                         DateOnly convertedDate = DateOnly.Parse(date);
 
-                        messages = (from m in repository.GetMessages()
+                        messages = (from m in _repository.GetMessages()
                                     where m.Date == convertedDate
                                     select m).ToList();
                     }
@@ -114,8 +114,17 @@ namespace PopularGameEngines.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Post(Message model)
+        public async Task<IActionResult> Post(Message model)
         {
+            if (_userManager != null)
+            {
+                model.From = _userManager.GetUserAsync(User).Result;
+
+                AppUser sender = await _userManager.FindByNameAsync(model.From.Name);
+
+                if (sender != null) model.From = sender;
+            }
+
             Random rnd = new();
 
             // Fallbacks
@@ -127,12 +136,18 @@ namespace PopularGameEngines.Controllers
             model.Date = DateOnly.FromDateTime(DateTime.Now);
             model.Rating = rnd.Next(0, 10);
 
-            if (userManager != null) model.From = userManager.GetUserAsync(User).Result;
+            if (model.From != null && model.From.Name != "")
+            {
+                await _repository.StoreMessageAsync(model);
 
-            //int result =
-            repository.StoreMessage(model);
+                return RedirectToAction("Index", new { model.MessageId });
+            }
+            else
+            {
+                ModelState.AddModelError("", "Sender isn't a registered user.");
 
-            return RedirectToAction("Index", new { model.MessageId });
+                return View(model);
+            }
         }
     }
 }

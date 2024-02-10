@@ -15,7 +15,7 @@
             </div>
         </div>
         @* Date *@
-        <div class="shadow-2xl mt-5 mb-10">
+        <div class="shadow-2xl my-5">
             <div class="flex my-5">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
                 <input for="date" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
@@ -23,17 +23,15 @@
             </div>
         </div>
         <div class="flex flex-col lg:flex-row text-center gap-3">
-            <input class="bg-cyan-400 hover:bg-cyan-300 text-black hover:cursor-pointer p-3" type="submit"
-                value="Filter" />
-            <span class="p-3">
-                <partial name="~/views/shared/htmllink.cshtml"
-                    model='new HtmlLink { URL="/blog", Body="Reset Filter" }' />
-            </span>
+            <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"
+                type="submit">Filter</button>
+            <partial name="~/views/shared/htmllink.cshtml"
+                model='new HtmlLink { Type="blog-1", URL="/blog", Body="Reset Filter" }' />
         </div>
     </form>
     @if (@Model != null)
     {
-        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full my-10">
+        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full mt-10 mb-5">
             @foreach (var message in Model)
             {
                 <li>
@@ -63,8 +61,6 @@
             }
         </ul>
     }
-    <div class="flex text-center lg:text-start mb-10">
-        <a class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-black select-none hover:cursor-pointer p-3"
-            href="/blog/post">Create Post</a>
-    </div>
+    <partial name="~/views/shared/htmllink.cshtml"
+        model='new HtmlLink { Type="blog-2", URL="/blog/post", Body="Create Post" }' />
 </div>
