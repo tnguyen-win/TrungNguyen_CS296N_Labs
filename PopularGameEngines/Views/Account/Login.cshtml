@@ -8,9 +8,9 @@
     <h3 class="text-2xl font-black mb-5">Create new account</h3>
     <span class="p-3 ps-0">
         <partial name="~/views/shared/htmllink.cshtml"
-            model='new HtmlLink { URL="/account/register", Body="Register" }' />
+            model='new HtmlLink { Type="login-1", URL="/account/register", Body="Register" }' />
     </span>
-    <h3 class="text-2xl font-black mt-10">Use existing account</h3>
+    <h3 class="text-2xl font-black">Use existing account</h3>
     <div class="flex flex-col text-red-500 mt-3">
         @Html.ValidationSummary(true)
     </div>
@@ -46,17 +46,17 @@
         @* Remember Me *@
         <div class="shadow-2xl mb-10">
             <label
-                class="w-full lg:w-max flex justify-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black select-none hover:cursor-pointer p-3">
-                <input type="checkbox" for="RememberMe" />
+                class="w-full lg:w-max flex justify-center gap-3 bg-cyan-400 hover:bg-cyan-300 text-black select-none cursor-pointer p-3"
+                for="remember">
+                <input id="remember" for="remember" type="checkbox" />
                 Remember Me
             </label>
         </div>
         <div class="flex flex-col items-center gap-3">
             <div class="w-full flex flex-col lg:flex-row text-center lg:text-start gap-3">
                 <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3" type="submit">Login</button>
-                <span class="p-3">
-                    <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/", Body="Cancel" }' />
-                </span>
+                <partial name="~/views/shared/htmllink.cshtml"
+                    model='new HtmlLink { Type="login-2", URL="/", Body="Cancel" }' />
             </div>
         </div>
     </form>

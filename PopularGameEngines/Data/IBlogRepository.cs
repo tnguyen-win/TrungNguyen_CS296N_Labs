@@ -6,8 +6,8 @@ namespace PopularGameEngines.Data
     {
         public List<Message> GetMessages();
 
-        public Message GetMessageById(int id);
+        // public Task<Message> GetMessageByIdAsync(int id);
 
-        public int StoreMessage(Message message);
+        public Task<int> StoreMessageAsync(Message message);
     }
 }

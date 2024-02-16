@@ -6,10 +6,9 @@
 <div class="m-5 lg:mx-0 lg:my-20">
     <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <h3 class="text-2xl font-black mb-5">Manage users</h3>
-    <span class="p-3 ps-0">
-        <partial name="~/views/shared/htmllink.cshtml" model='new HtmlLink { URL="/user/add", Body="Add User" }' />
-    </span>
-    <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] mt-10 mb-5">
+    <partial name="~/views/shared/htmllink.cshtml"
+        model='new HtmlLink { Type="user", URL="/user/add", Body="Add User" }' />
+    <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] my-5">
         <thead class="bg-[rgb(10%,10%,10%)]">
             <tr>
                 <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Username</th>
