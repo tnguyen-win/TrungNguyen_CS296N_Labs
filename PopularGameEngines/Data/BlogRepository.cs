@@ -9,9 +9,9 @@ namespace PopularGameEngines.Data
 
         public BlogRepository(AppDbContext c) => _context = c;
 
-        public async Task<Message> GetMessageByIdAsync(int id) => await _context.Messages.FindAsync(id);
+        // public async Task<Message> GetMessageByIdAsync(int id) => await _context.Messages.FindAsync(id);
 
-        public List<Message> GetMessages() => _context.Messages != null ? _context.Messages.Include(m => m.From).ToList() : new List<Message>();
+        public List<Message> GetMessages() => _context.Messages.Include(m => m.From).ToList();
 
         public async Task<int> StoreMessageAsync(Message message)
         {

@@ -116,38 +116,20 @@ namespace PopularGameEngines.Controllers
         [Authorize]
         public async Task<IActionResult> Post(Message model)
         {
-            if (_userManager != null)
-            {
-                model.From = _userManager.GetUserAsync(User).Result;
-
-                AppUser sender = await _userManager.FindByNameAsync(model.From.Name);
-
-                if (sender != null) model.From = sender;
-            }
-
             Random rnd = new();
 
             // Fallbacks
             model.Title ??= "Random title";
             model.Body ??= "Lorem ipsum.";
-            if (model.From != null) model.From.Name ??= "John Smith";
 
-            // Originals
+            // Defaults
+            if (_userManager != null) model.From = await _userManager.GetUserAsync(User);
             model.Date = DateOnly.FromDateTime(DateTime.Now);
             model.Rating = rnd.Next(0, 10);
 
-            if (model.From != null && model.From.Name != "")
-            {
-                await _repository.StoreMessageAsync(model);
+            await _repository.StoreMessageAsync(model);
 
-                return RedirectToAction("Index", new { model.MessageId });
-            }
-            else
-            {
-                ModelState.AddModelError("", "Sender isn't a registered user.");
-
-                return View(model);
-            }
+            return RedirectToAction("Index", new { model.MessageId });
         }
     }
 }
