@@ -29,7 +29,7 @@ namespace PopularGameEngines.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string author, string date)
+        public async Task<IActionResult> Index(string author, string date)
         {
             List<Message> messages = (from m in _repository.GetMessages() select m).ToList();
 
