@@ -9,5 +9,7 @@ namespace PopularGameEngines.Data
         // public Task<Message> GetMessageByIdAsync(int id);
 
         public Task<int> StoreMessageAsync(Message message);
+
+        public int DeleteMessage(int messageId);
     }
 }

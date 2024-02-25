@@ -19,5 +19,14 @@ namespace PopularGameEngines.Data
 
             return _context.SaveChanges();
         }
+
+        public int DeleteMessage(int messageId)
+        {
+            Message message = _context.Messages.Find(messageId);
+
+            _context.Remove(message);
+
+            return _context.SaveChanges();
+        }
     }
 }

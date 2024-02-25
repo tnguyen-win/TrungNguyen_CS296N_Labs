@@ -131,5 +131,12 @@ namespace PopularGameEngines.Controllers
 
             return RedirectToAction("Index", new { model.MessageId });
         }
+
+        public IActionResult DeletePost(int messageId)
+        {
+            _repository.DeleteMessage(messageId);
+
+            return RedirectToAction("Index");
+        }
     }
 }

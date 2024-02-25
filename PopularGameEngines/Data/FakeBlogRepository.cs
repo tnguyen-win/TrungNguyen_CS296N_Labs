@@ -18,5 +18,7 @@ namespace PopularGameEngines.Data
 
             return message.MessageId;
         }
+
+        public int DeleteMessage(int messageId) => throw new NotImplementedException();
     }
 }
