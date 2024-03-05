@@ -6,7 +6,7 @@ namespace PopularGameEngines.Data
     {
         readonly List<Message> _messages = new();
 
-        // public async Task<Message> GetMessageByIdAsync(int id) => throw new NotImplementedException();
+        public async Task<Message> GetMessageByIdAsync(int id) => throw new NotImplementedException();
 
         public List<Message> GetMessages() => throw new NotImplementedException();
 
@@ -18,6 +18,8 @@ namespace PopularGameEngines.Data
 
             return message.MessageId;
         }
+
+        public int UpdateMessage(Message message) => throw new NotImplementedException();
 
         public int DeleteMessage(int messageId) => throw new NotImplementedException();
     }

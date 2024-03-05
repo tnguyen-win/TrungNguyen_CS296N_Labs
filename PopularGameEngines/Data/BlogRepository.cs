@@ -9,9 +9,25 @@ namespace PopularGameEngines.Data
 
         public BlogRepository(AppDbContext c) => _context = c;
 
-        // public async Task<Message> GetMessageByIdAsync(int id) => await _context.Messages.FindAsync(id);
+        public async Task<Message> GetMessageByIdAsync(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
 
-        public List<Message> GetMessages() => _context.Messages.Include(m => m.From).ToList();
+            _context.Entry(message).Reference(m => m.To).Load();
+            _context.Entry(message).Reference(m => m.From).Load();
+            _context.Entry(message).Collection(m => m.Replies).Load();
+
+            return message;
+        }
+
+        // public List<Message> GetMessages() => _context.Messages.Include(m => m.From).ToList();
+        public List<Message> GetMessages()
+        {
+            return _context.Messages
+            .Include(m => m.To)
+            .Include(m => m.From)
+            .ToList();
+        }
 
         public async Task<int> StoreMessageAsync(Message message)
         {
@@ -20,11 +36,20 @@ namespace PopularGameEngines.Data
             return _context.SaveChanges();
         }
 
+        public int UpdateMessage(Message message)
+        {
+            _context.Update(message);
+
+            return _context.SaveChanges();
+        }
+
         public int DeleteMessage(int messageId)
         {
-            Message message = _context.Messages.Find(messageId);
+            Message message = GetMessageByIdAsync(messageId).Result;
 
-            _context.Remove(message);
+            if (message.Replies.Count > 0) foreach (var reply in message.Replies) _context.Messages.Remove(reply);
+
+            _context.Messages.Remove(message);
 
             return _context.SaveChanges();
         }

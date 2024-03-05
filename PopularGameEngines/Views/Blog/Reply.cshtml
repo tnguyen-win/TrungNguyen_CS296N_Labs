@@ -1,27 +1,11 @@
 ﻿@model Message
 @{
-    ViewBag.Title = "CS296N - Blog - Post";
+    ViewBag.Title = "CS296N - Blog - Reply";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
     <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <form method="post">
-        @* To *@
-        @* <div class="shadow-2xl">
-        <div class="flex my-5">
-        <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">To</span>
-        <input id="to" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="To"
-        placeholder="Enter post sender" />
-        </div>
-        </div> *@
-        @* Title *@
-        <div class="shadow-2xl">
-            <div class="flex my-5">
-                <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Title</span>
-                <input id="title" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Title"
-                    placeholder="Enter post description" />
-            </div>
-        </div>
         @* Body *@
         <div class="shadow-2xl my-5">
             <div class="flex my-5">
@@ -30,6 +14,7 @@
                     placeholder="Enter post message" />
             </div>
         </div>
+        <input hidden name="OriginalMessageId" value="@Model.OriginalMessageId" />
         @* Submit *@
         <div class="flex text-center lg:text-start mb-10">
             <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"

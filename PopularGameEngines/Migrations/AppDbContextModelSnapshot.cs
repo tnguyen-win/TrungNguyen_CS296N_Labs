@@ -233,15 +233,25 @@ namespace PopularGameEngines.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int?>("OriginalMessageId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ToId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("MessageId");
 
                     b.HasIndex("FromId");
+
+                    b.HasIndex("OriginalMessageId");
+
+                    b.HasIndex("ToId");
 
                     b.ToTable("Messages");
                 });
@@ -315,7 +325,22 @@ namespace PopularGameEngines.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PopularGameEngines.Models.Message", null)
+                        .WithMany("Replies")
+                        .HasForeignKey("OriginalMessageId");
+
+                    b.HasOne("PopularGameEngines.Models.AppUser", "To")
+                        .WithMany()
+                        .HasForeignKey("ToId");
+
                     b.Navigation("From");
+
+                    b.Navigation("To");
+                });
+
+            modelBuilder.Entity("PopularGameEngines.Models.Message", b =>
+                {
+                    b.Navigation("Replies");
                 });
 #pragma warning restore 612, 618
         }
