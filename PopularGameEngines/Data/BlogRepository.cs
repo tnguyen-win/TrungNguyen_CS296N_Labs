@@ -20,7 +20,6 @@ namespace PopularGameEngines.Data
             return message;
         }
 
-        // public List<Message> GetMessages() => _context.Messages.Include(m => m.From).ToList();
         public List<Message> GetMessages()
         {
             return _context.Messages

@@ -14,7 +14,7 @@ namespace PopularGameEngines.Models
 
         public AppUser? To { get; set; }
 
-        public AppUser From { get; set; }
+        public AppUser From { get; set; } = new();
 
         public DateOnly Date { get; set; }
 

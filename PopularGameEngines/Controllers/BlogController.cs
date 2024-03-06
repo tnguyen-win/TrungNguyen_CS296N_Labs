@@ -123,33 +123,13 @@ namespace PopularGameEngines.Controllers
             model.Body ??= "Lorem ipsum.";
 
             // Defaults
-            if (_userManager != null)
-            {
-                model.From = await _userManager.GetUserAsync(User);
-
-                // AppUser recipient = await _userManager.FindByNameAsync(model.To.Name);
-
-                // if (recipient != null) model.To = recipient;
-            }
+            if (_userManager != null) model.From = await _userManager.GetUserAsync(User);
             model.Date = DateOnly.FromDateTime(DateTime.Now);
             model.Rating = rnd.Next(0, 10);
 
             await _repository.StoreMessageAsync(model);
 
             return RedirectToAction("Index", new { model.MessageId });
-
-            // if (model.To.UserName != null)
-            // {
-            //     await _repository.StoreMessageAsync(model);
-
-            //     return RedirectToAction("Index", new { model.MessageId });
-            // }
-            // else
-            // {
-            //     ModelState.AddModelError("", "Recipient isn't a registered user.");
-
-            //     return View(model);
-            // }
         }
 
         [Authorize]
