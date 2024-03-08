@@ -92,8 +92,11 @@
                         </div>
                         <partial name="~/views/shared/htmllink.cshtml"
                             model='new HtmlLink { Type="navlink", URL="/blog", Body="Blog" }' />
+                        @if (User.IsInRole("Admin"))
+                        {
                         <partial name="~/views/shared/htmllink.cshtml"
                             model='new HtmlLink { Type="navlink", URL="/blogadmin", Body="Scaffolding" }' />
+                        }
                         <partial name="~/views/shared/htmllink.cshtml"
                             model='new HtmlLink { Type="navlink", URL="/scripting", Body="Scripting" }' />
                         <partial name="~/views/shared/htmllink.cshtml"

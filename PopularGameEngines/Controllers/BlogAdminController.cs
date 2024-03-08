@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using PopularGameEngines.Data;
 using PopularGameEngines.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PopularGameEngines.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BlogAdminController : Controller
     {
         private readonly AppDbContext _context;
