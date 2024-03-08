@@ -1,0 +1,33 @@
+<diagram program="umletino" version="15.1"><zoom_level>14</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>154</x><y>378</y><w>336</w><h>126</h></coordinates><panel_attributes>AppUser
+--
++ Name : string
++ RoleNames : IList&lt;string&gt;
+--
++ AppUser() : IdentityUser[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>994</x><y>322</y><w>294</w><h>224</h></coordinates><panel_attributes>Message
+--
++ MessageId : int
++ Title : string
++ Body : string
++ From : AppUser[]
++ Date : DateOnly[]
++ Rating : int
+--
++ Replies : List&lt;Message&gt;
++ OriginalMessageId : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>476</x><y>420</y><w>546</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>370;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>182</x><y>616</y><w>294</w><h>42</h></coordinates><panel_attributes>IdentityUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>490</y><w>56</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;.
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>504</y><w>294</w><h>168</h></coordinates><panel_attributes>Reply
+--
++ MessageId : int
++ Body : string
++ From : AppUser[]
++ Date : DateOnly[]
+--
++ OriginalMessageId : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>490</y><w>182</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>110;10;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>350</y><w>182</w><h>252</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;160;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>518</y><w>182</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;80;110;10</additional_attributes></element></diagram>
