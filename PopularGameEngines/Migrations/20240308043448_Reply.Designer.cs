@@ -11,14 +11,14 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240306195848_Reply")]
+    [Migration("20240308043448_Reply")]
     partial class Reply
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.24")
+                .HasAnnotation("ProductVersion", "6.0.27")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -244,16 +244,11 @@ namespace PopularGameEngines.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ToId")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("MessageId");
 
                     b.HasIndex("FromId");
 
                     b.HasIndex("OriginalMessageId");
-
-                    b.HasIndex("ToId");
 
                     b.ToTable("Messages");
                 });
@@ -331,13 +326,7 @@ namespace PopularGameEngines.Migrations
                         .WithMany("Replies")
                         .HasForeignKey("OriginalMessageId");
 
-                    b.HasOne("PopularGameEngines.Models.AppUser", "To")
-                        .WithMany()
-                        .HasForeignKey("ToId");
-
                     b.Navigation("From");
-
-                    b.Navigation("To");
                 });
 
             modelBuilder.Entity("PopularGameEngines.Models.Message", b =>

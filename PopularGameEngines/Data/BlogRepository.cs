@@ -13,7 +13,6 @@ namespace PopularGameEngines.Data
         {
             var message = await _context.Messages.FindAsync(id);
 
-            _context.Entry(message).Reference(m => m.To).Load();
             _context.Entry(message).Reference(m => m.From).Load();
             _context.Entry(message).Collection(m => m.Replies).Load();
 
@@ -23,7 +22,6 @@ namespace PopularGameEngines.Data
         public List<Message> GetMessages()
         {
             return _context.Messages
-            .Include(m => m.To)
             .Include(m => m.From)
             .ToList();
         }

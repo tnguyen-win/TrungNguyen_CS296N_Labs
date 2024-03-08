@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PopularGameEngines.Models.Message>
+
+@{
+    ViewData["Title"] = "CS296N - BlogAdmin - Index";
+}
+
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
+    <div class="relative overflow-x-auto">
+        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] mb-5">
+            <thead class="bg-[rgb(10%,10%,10%)]">
+                <tr>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Body)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Rating)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        📄
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        🛠️
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        ❌
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            @Html.DisplayFor(modelItem => item.Rating)
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Type="blog-1", URL=$"/blogadmin/details/{@item.MessageId}", Body="Details" }' />
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Type="blog-1", URL=$"/blogadmin/edit/{@item.MessageId}", Body="Edit" }' />
+                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLink { Type="blog-1", URL=$"/blogadmin/delete/{@item.MessageId}", Body="Delete" }' />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <partial name="~/views/shared/htmllink.cshtml"
+        model='new HtmlLink { Type="blog-2", URL="/blog/post", Body="Create Post" }' />
+</div>

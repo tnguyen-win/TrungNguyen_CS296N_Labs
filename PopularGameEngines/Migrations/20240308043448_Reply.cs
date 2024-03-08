@@ -208,8 +208,6 @@ namespace PopularGameEngines.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Body = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ToId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     FromId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date = table.Column<DateOnly>(type: "date", nullable: false),
@@ -225,11 +223,6 @@ namespace PopularGameEngines.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Messages_AspNetUsers_ToId",
-                        column: x => x.ToId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Messages_Messages_OriginalMessageId",
                         column: x => x.OriginalMessageId,
@@ -284,11 +277,6 @@ namespace PopularGameEngines.Migrations
                 name: "IX_Messages_OriginalMessageId",
                 table: "Messages",
                 column: "OriginalMessageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Messages_ToId",
-                table: "Messages",
-                column: "ToId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

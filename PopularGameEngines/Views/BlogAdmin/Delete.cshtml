@@ -1,0 +1,55 @@
+﻿@model PopularGameEngines.Models.Message
+
+@{
+    ViewData["Title"] = "CS296N - User - Delete";
+}
+
+<div class="m-5 lg:mx-0 lg:my-20">
+    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
+    <h3 class="text-2xl font-black mb-5">Are you sure you want to delete?</h3>
+    <div class="relative overflow-x-auto">
+        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] mb-10">
+            <thead class="bg-[rgb(10%,10%,10%)]">
+                <tr>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Body)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayNameFor(model => model.Rating)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                    <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayFor(model => model.Body)
+                    </td>
+                    <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayFor(model => model.Date)
+                    </td>
+                    <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                        @Html.DisplayFor(model => model.Rating)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form asp-action="delete">
+        <input type="hidden" asp-for="MessageId" />
+        <div class="w-full flex flex-col lg:flex-row text-center lg:text-start gap-3">
+            <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"
+                type="submit">Delete</button>
+            <partial name="~/views/shared/htmllink.cshtml"
+                model='new HtmlLink { Type="login-2", URL="/blogadmin", Body="Back to List" }' />
+        </div>
+    </form>
+</div>

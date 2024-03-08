@@ -135,32 +135,31 @@ namespace PopularGameEngines.Controllers
         [Authorize]
         public IActionResult Reply(int? OriginalMessageId)
         {
-            Message message = new()
+            Message reply = new()
             {
                 OriginalMessageId = OriginalMessageId
             };
 
-            return View(message);
+            return View(reply);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Reply(Message model)
+        public async Task<IActionResult> Reply(Message reply)
         {
             // Fallbacks
-            model.Body ??= "Lorem ipsum.";
+            reply.Body ??= "Lorem ipsum.";
 
             // Defaults
-            if (_userManager != null) model.From = await _userManager.GetUserAsync(User);
-            Message originalMessage = await _repository.GetMessageByIdAsync(model.OriginalMessageId.Value);
-            model.To = originalMessage.From;
-            model.Date = DateOnly.FromDateTime(DateTime.Now);
+            if (_userManager != null) reply.From = await _userManager.GetUserAsync(User);
+            Message originalMessage = await _repository.GetMessageByIdAsync(reply.OriginalMessageId.Value);
+            reply.Date = DateOnly.FromDateTime(DateTime.Now);
 
-            await _repository.StoreMessageAsync(model);
-            originalMessage.Replies.Add(model);
+            await _repository.StoreMessageAsync(reply);
+            originalMessage.Replies.Add(reply);
             _repository.UpdateMessage(originalMessage);
 
-            return RedirectToAction("Index", new { model.MessageId });
+            return RedirectToAction("Index", new { reply.MessageId });
         }
 
         [Authorize]
