@@ -131,5 +131,43 @@ namespace PopularGameEngines.Controllers
 
             return RedirectToAction("Index", new { model.MessageId });
         }
+
+        [Authorize]
+        public IActionResult Reply(int? OriginalMessageId)
+        {
+            Message reply = new()
+            {
+                OriginalMessageId = OriginalMessageId
+            };
+
+            return View(reply);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Reply(Message reply)
+        {
+            // Fallbacks
+            reply.Body ??= "Lorem ipsum.";
+
+            // Defaults
+            if (_userManager != null) reply.From = await _userManager.GetUserAsync(User);
+            Message originalMessage = await _repository.GetMessageByIdAsync(reply.OriginalMessageId.Value);
+            reply.Date = DateOnly.FromDateTime(DateTime.Now);
+
+            await _repository.StoreMessageAsync(reply);
+            originalMessage.Replies.Add(reply);
+            _repository.UpdateMessage(originalMessage);
+
+            return RedirectToAction("Index", new { reply.MessageId });
+        }
+
+        [Authorize]
+        public IActionResult DeletePost(int messageId)
+        {
+            _repository.DeleteMessage(messageId);
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -20,9 +20,7 @@ if %input% == 2 (
 
     call dotnet ef migrations remove
 
-    call dotnet ef migrations add InitialMySQL
-
-    call dotnet ef migrations add Identity
+    call dotnet ef migrations add Reply
 
     call dotnet ef database update
 )

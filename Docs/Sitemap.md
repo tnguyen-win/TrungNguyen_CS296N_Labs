@@ -1,21 +1,27 @@
 - **Home:**
-    - Overview: A page that displays a brief description of the topic.
-    - Homepage: A page that displays the main content of the site.
-    - References: A page that displays sources of information.
-    - Privacy: A page that displays disclaimers of what type of data is collected from site visitors.
+    - Overview: Page that displays a small FAQ.
+    - Homepage: Page that displays the landing page.
+    - References: Page that displays citations for used information.
+    - Privacy: Page that displays disclaimers about data that's collected from site visitors.
 
 - **Blog:**
-    - Homepage: A page that displays all (or filtered) submitted message board posts.
-    - Post: A page where logged-in account users can create message board posts.
+    - Homepage: Page that displays all submitted message board posts and replies. Posts or replies can also be filtered or deleted.
+    - Post: Page where any verified users can create message board posts.
+    - Reply: Page where any verified users can create message board post replies.
 
-- **Scripting:** A page that depicts the scripting methods supported by listed game engines.
+- **BlogAdmin:**
+    - Homepage: Page that displays all submitted message board posts and replies.
+    - Details: Page that displays a singular post or reply and its attributes.
+    - Edit: Page that allows the modifying of post or reply attributes.
+    - Delete: Page that requests final confirmation before deleting a post or reply.
 
-- **Quiz:** A page that displays questions that can be answered via form fields.
+- **Scripting:** Page that lists scripting methods supported by various listed game engines.
 
-- **User (Admin):** A restricted page that's only accessible to those who're logged-in account users that have admin privileges.
+- **Quiz:** Page that displays questions that can be answered via form fields.
 
-- **Login:** A page where site visitors can login for a registered account user.
+- **User (Admin):** Page that's restricted to verified users that have admin privileges.
 
-- **Register:** A page where site visitors can create a new account user.
-
-- **AccessDenied:** Basic 404 page for logged-in account users who don't have admin privileges.
+- **Account:**
+    - Login: Page where site visitors can login to a registered account.
+    - Register: Page where site visitors can create a new account.
+    - AccessDenied: Page for verified users that don't have admin privileges.

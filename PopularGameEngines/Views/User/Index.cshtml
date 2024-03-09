@@ -8,68 +8,70 @@
     <h3 class="text-2xl font-black mb-5">Manage users</h3>
     <partial name="~/views/shared/htmllink.cshtml"
         model='new HtmlLink { Type="user", URL="/user/add", Body="Add User" }' />
-    <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] my-5">
-        <thead class="bg-[rgb(10%,10%,10%)]">
-            <tr>
-                <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Username</th>
-                <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Roles</th>
-                <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
-                <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
-                <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model.Users.Count() == 0)
-            {
+    <div class="relative overflow-x-auto">
+        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] my-5">
+            <thead class="bg-[rgb(10%,10%,10%)]">
                 <tr>
-                    <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">There are no user accounts.</td>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Username</th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Roles</th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
+                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
                 </tr>
-            }
-            else
-            {
-                @foreach (AppUser user in Model.Users)
+            </thead>
+            <tbody>
+                @if (Model.Users.Count() == 0)
                 {
                     <tr>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">@user.UserName</td>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
-                            @if (user.RoleNames != null && user.RoleNames.Count() != 0)
-                            {
-                                @foreach (string roleName in user.RoleNames)
-                                {
-                                    <div>@roleName</div>
-                                }
-                            }
-                            else
-                            {
-                                <div>❌</div>
-                            }
-                        </td>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
-                            <form method="post" action="/user/delete/@user.Id">
-                                <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                    Delete User
-                                </button>
-                            </form>
-                        </td>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
-                            <form method="post" action="/user/addtoadmin/@user.Id">
-                                <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                    Add To Admin
-                                </button>
-                            </form>
-                        </td>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
-                            <form method="post" action="/user/removefromadmin/@user.Id">
-                                <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                    Remove From Admin
-                                </button>
-                            </form>
-                        </td>
+                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">There are no user accounts.</td>
                     </tr>
                 }
-            }
-        </tbody>
-    </table>
+                else
+                {
+                    foreach (AppUser user in Model.Users)
+                    {
+                        <tr>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">@user.UserName</td>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                                @if (user.RoleNames != null && user.RoleNames.Count() != 0)
+                                {
+                                    foreach (string roleName in user.RoleNames)
+                                    {
+                                        <div>@roleName</div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div>❌</div>
+                                }
+                            </td>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                                <form method="post" action="/user/delete/@user.Id">
+                                    <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
+                                        Delete User
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                                <form method="post" action="/user/addtoadmin/@user.Id">
+                                    <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
+                                        Add To Admin
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                                <form method="post" action="/user/removefromadmin/@user.Id">
+                                    <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
+                                        Remove From Admin
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
     <h3 class="text-2xl font-black mt-10 mb-5">Manage roles</h3>
     @if (Model.Roles.Count() == 0)
     {
@@ -81,28 +83,30 @@
     }
     else
     {
-        <table class="table-auto shadow-2xl">
-            <thead class="bg-[rgb(10%,10%,10%)]">
-                <tr>
-                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Role</th>
-                    <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var role in Model.Roles)
-                {
+        <div class="relative overflow-x-auto">
+            <table class="shadow-2xl">
+                <thead class="bg-[rgb(10%,10%,10%)]">
                     <tr>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">@role.Name</td>
-                        <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
-                            <form method="post" action="/user/deleterole/@role.Id">
-                                <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                    Delete Role
-                                </button>
-                            </form>
-                        </td>
+                        <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Role</th>
+                        <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3"></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <tr>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">@role.Name</td>
+                            <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
+                                <form method="post" action="/user/deleterole/@role.Id">
+                                    <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
+                                        Delete Role
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PopularGameEngines.Migrations
 {
-    public partial class InitialMySQL : Migration
+    public partial class Reply : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -208,10 +208,11 @@ namespace PopularGameEngines.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Body = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FromId = table.Column<string>(type: "varchar(255)", nullable: true)
+                    FromId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date = table.Column<DateOnly>(type: "date", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false)
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    OriginalMessageId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -220,7 +221,13 @@ namespace PopularGameEngines.Migrations
                         name: "FK_Messages_AspNetUsers_FromId",
                         column: x => x.FromId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Messages_Messages_OriginalMessageId",
+                        column: x => x.OriginalMessageId,
+                        principalTable: "Messages",
+                        principalColumn: "MessageId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -265,6 +272,11 @@ namespace PopularGameEngines.Migrations
                 name: "IX_Messages_FromId",
                 table: "Messages",
                 column: "FromId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_OriginalMessageId",
+                table: "Messages",
+                column: "OriginalMessageId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

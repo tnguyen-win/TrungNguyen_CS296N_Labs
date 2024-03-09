@@ -67,7 +67,7 @@ namespace PopularGameEngines.Controllers
                 {
                     string errorMessage = "";
 
-                    foreach (IdentityError error in result.Errors) errorMessage += error.Description + " | ";
+                    foreach (IdentityError error in result.Errors) errorMessage += $"{error.Description} | ";
 
                     TempData["message"] = errorMessage;
                 }
@@ -81,7 +81,7 @@ namespace PopularGameEngines.Controllers
         {
             IdentityRole adminRole = await _roleManager.FindByNameAsync("Admin");
 
-            if (adminRole == null) TempData["message"] = "Admin role does not exist. " + "Click 'Create Admin Role' button to create it.";
+            if (adminRole == null) TempData["message"] = "Admin role doesn't exist. Click 'Add Admin Role' button to create it.";
             else
             {
                 AppUser user = await _userManager.FindByIdAsync(id);

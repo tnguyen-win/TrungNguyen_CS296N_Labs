@@ -16,7 +16,7 @@ namespace PopularGameEngines.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.24")
+                .HasAnnotation("ProductVersion", "6.0.27")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -233,6 +233,9 @@ namespace PopularGameEngines.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int?>("OriginalMessageId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
@@ -242,6 +245,8 @@ namespace PopularGameEngines.Migrations
                     b.HasKey("MessageId");
 
                     b.HasIndex("FromId");
+
+                    b.HasIndex("OriginalMessageId");
 
                     b.ToTable("Messages");
                 });
@@ -315,7 +320,16 @@ namespace PopularGameEngines.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PopularGameEngines.Models.Message", null)
+                        .WithMany("Replies")
+                        .HasForeignKey("OriginalMessageId");
+
                     b.Navigation("From");
+                });
+
+            modelBuilder.Entity("PopularGameEngines.Models.Message", b =>
+                {
+                    b.Navigation("Replies");
                 });
 #pragma warning restore 612, 618
         }
