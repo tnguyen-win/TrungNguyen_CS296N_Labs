@@ -55,13 +55,14 @@ namespace PopularGameEngines.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, string fromId, [Bind("MessageId,Title,Body,Date,Rating,OriginalMessageId")] Message message)
+        public async Task<IActionResult> Edit(int id, string fromId, string date, [Bind("MessageId,Title,Body,Date,Rating,OriginalMessageId")] Message message)
         {
             if (id != message.MessageId) return NotFound();
 
             var from = await _userManager.FindByIdAsync(fromId);
 
             message.From = from;
+            message.Date = DateOnly.Parse(date);
 
             ModelState.ClearValidationState(nameof(Message.From));
 
