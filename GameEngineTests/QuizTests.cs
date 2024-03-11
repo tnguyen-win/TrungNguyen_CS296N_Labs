@@ -6,7 +6,7 @@ namespace GameEngineTests {
         [Fact]
         public void TestLoadQuestions() {
             var controller = new QuizController();
-            var model = new QuizQuestions();
+            var model = new QuizVM();
             var loadedModel = controller.LoadQuestions(model);
 
             Assert.NotNull(loadedModel.Questions);
@@ -19,7 +19,7 @@ namespace GameEngineTests {
 
         [Fact]
         public void TestCheckQuizAnswers() {
-            var model = new QuizQuestions();
+            var model = new QuizVM();
             var controller = new QuizController();
             var loadedModel = controller.LoadQuestions(model);
 

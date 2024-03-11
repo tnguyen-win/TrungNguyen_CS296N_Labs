@@ -30,11 +30,13 @@ namespace PopularGameEngines.Controllers
                 else foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             }
 
+            ModelState.AddModelError("", "Invalid NAME / USERNAME / PASSWORD / CONFIRM PASSWORD");
+
             return View(model);
         }
 
         [HttpGet]
-        public IActionResult LogIn(string returnURL = "")
+        public IActionResult Login(string returnURL = "")
         {
             var model = new LoginVM { ReturnUrl = returnURL };
 
@@ -42,7 +44,7 @@ namespace PopularGameEngines.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginVM model)
+        public async Task<IActionResult> Login(LoginVM model)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +59,7 @@ namespace PopularGameEngines.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 

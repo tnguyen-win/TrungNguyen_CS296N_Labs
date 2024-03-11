@@ -5,11 +5,14 @@
 
 <div class="m-5 lg:mx-0 lg:my-20">
     <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
-    <h3 class="text-2xl font-black mb-5">Manage users</h3>
+    <h3 class="text-2xl font-black">Manage users</h3>
     <partial name="~/views/shared/htmllink.cshtml"
-        model='new HtmlLink { Type="user", URL="/user/add", Body="Add User" }' />
+        model='new HtmlLinkVM { Type="user", URL="/user/add", Body="Add User" }' />
+    <div class="flex flex-col text-red-500 mt-3">
+        @Html.ValidationSummary(true)
+    </div>
     <div class="relative overflow-x-auto">
-        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] my-5">
+        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl my-5">
             <thead class="bg-[rgb(10%,10%,10%)]">
                 <tr>
                     <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">Username</th>
@@ -55,14 +58,14 @@
                             <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
                                 <form method="post" action="/user/addtoadmin/@user.Id">
                                     <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                        Add To Admin
+                                        Add User To Admin
                                     </button>
                                 </form>
                             </td>
                             <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
                                 <form method="post" action="/user/removefromadmin/@user.Id">
                                     <button type="submit" class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">
-                                        Remove From Admin
+                                        Remove User From Admin
                                     </button>
                                 </form>
                             </td>
@@ -72,7 +75,7 @@
             </tbody>
         </table>
     </div>
-    <h3 class="text-2xl font-black mt-10 mb-5">Manage roles</h3>
+    <h3 class="text-2xl font-black mt-5 mb-3">Manage roles</h3>
     @if (Model.Roles.Count() == 0)
     {
         <form method="post" action="/user/createadminrole">

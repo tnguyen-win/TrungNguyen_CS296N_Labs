@@ -8,11 +8,11 @@ namespace PopularGameEngines.Controllers
     {
         public IActionResult Index() => View();
 
-        public IActionResult Privacy() => View();
-
-        public IActionResult Overview() => View();
+        public IActionResult FAQ() => View();
 
         public IActionResult References() => View();
+
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() => View(new ErrorVM { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

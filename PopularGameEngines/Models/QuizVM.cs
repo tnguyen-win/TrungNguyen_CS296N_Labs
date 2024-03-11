@@ -1,6 +1,6 @@
 ﻿namespace PopularGameEngines.Models
 {
-    public class QuizQuestions
+    public class QuizVM
     {
         public Dictionary<int, string> Questions { get; set; } = null!;
 

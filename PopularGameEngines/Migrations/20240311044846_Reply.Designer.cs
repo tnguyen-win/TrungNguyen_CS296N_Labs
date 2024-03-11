@@ -11,7 +11,7 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240308043448_Reply")]
+    [Migration("20240311044846_Reply")]
     partial class Reply
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,7 +258,9 @@ namespace PopularGameEngines.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)");
 
                     b.HasDiscriminator().HasValue("AppUser");
                 });

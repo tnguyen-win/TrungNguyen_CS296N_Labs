@@ -6,8 +6,8 @@
 
 <div class="m-5 lg:mx-0 lg:my-20">
     <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
-    <div class="relative overflow-x-auto">
-        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] mb-5">
+    <div class="relative overflow-x-auto mb-5">
+        <table class="text-center border-collapse border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl mb-5">
             <thead class="bg-[rgb(10%,10%,10%)]">
                 <tr>
                     <th class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
@@ -43,12 +43,12 @@
                     </td>
                     <td class="border-[1px] border-[rgb(25%,25%,25%)] p-3">
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="blog-1", URL=$"/blogadmin/edit/{@Model.MessageId}", Body="Edit" }' />
+                            model='new HtmlLinkVM { Type="blog-1", URL=$"/blogadmin/edit/{@Model.MessageId}", Body="Edit" }' />
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <partial name="~/views/shared/htmllink.cshtml"
-        model='new HtmlLink { Type="blog-2", URL=$"/blogadmin", Body="Back to List" }' />
+        model='new HtmlLinkVM { Type="blog-2", URL=$"/blogadmin", Body="Back to List" }' />
 </div>

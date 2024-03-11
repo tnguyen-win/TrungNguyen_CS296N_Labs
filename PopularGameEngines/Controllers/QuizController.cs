@@ -25,7 +25,7 @@ namespace PopularGameEngines.Controllers
 
         public IActionResult Index()
         {
-            var model = LoadQuestions(new QuizQuestions());
+            var model = LoadQuestions(new QuizVM());
 
             return View(model);
         }
@@ -33,7 +33,7 @@ namespace PopularGameEngines.Controllers
         [HttpPost]
         public IActionResult Index(string answer1, string answer2, string answer3, string answer4)
         {
-            var model = LoadQuestions(new QuizQuestions());
+            var model = LoadQuestions(new QuizVM());
 
             model.UserAnswers[1] = answer1;
             model.UserAnswers[2] = answer2;
@@ -45,7 +45,7 @@ namespace PopularGameEngines.Controllers
             return View(checkedModel);
         }
 
-        public QuizQuestions LoadQuestions(QuizQuestions model)
+        public QuizVM LoadQuestions(QuizVM model)
         {
             model.Questions = Questions;
             model.Answers = Answers;
@@ -62,7 +62,7 @@ namespace PopularGameEngines.Controllers
             return model;
         }
 
-        public QuizQuestions CheckQuizAnswers(QuizQuestions model)
+        public QuizVM CheckQuizAnswers(QuizVM model)
         {
             foreach (var question in Questions)
             {

@@ -38,7 +38,7 @@
                 <div class="flex flex-col lg:flex-row lg:me-auto">
                     <div class="h-16 flex items-center border-b-[1px] border-[rgb(25%,25%,25%)] lg:border-0">
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="brand", URL="/", Body="Popular Game Engines" }' />
+                            model='new HtmlLinkVM { Type="brand", URL="/", Body="Popular Game Engines" }' />
                         <button id="eMobileButton" class="lg:hidden h-full flex items-center ms-auto p-6" type="button"
                             onclick="toggleMobile();">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
@@ -74,37 +74,37 @@
                                 class="eMobiles hidden lg:group-focus-within:block lg:group-focus-within:hidden lg:group-hover:block lg:absolute lg:top-full w-full lg:w-[200%] lg:start-[-50%] lg:bg-[rgb(10%,10%,10%)] text-[rgb(75%,75%,75%)] lg:shadow-2xl">
                                 <li>
                                     <partial name="~/views/shared/htmllink.cshtml"
-                                        model='new HtmlLink { Type="dropdown", URL="/home/overview", Body="Overview" }' />
+                                        model='new HtmlLinkVM { Type="dropdown", URL="/", Body="Homepage" }' />
                                 </li>
                                 <li>
                                     <partial name="~/views/shared/htmllink.cshtml"
-                                        model='new HtmlLink { Type="dropdown", URL="/", Body="Homepage" }' />
+                                        model='new HtmlLinkVM { Type="dropdown", URL="/home/faq", Body="FAQ" }' />
                                 </li>
                                 <li>
                                     <partial name="~/views/shared/htmllink.cshtml"
-                                        model='new HtmlLink { Type="dropdown", URL="/home/references", Body="References" }' />
+                                        model='new HtmlLinkVM { Type="dropdown", URL="/home/references", Body="References" }' />
                                 </li>
                                 <li>
                                     <partial name="~/views/shared/htmllink.cshtml"
-                                        model='new HtmlLink { Type="dropdown", URL="/home/privacy", Body="Privacy" }' />
+                                        model='new HtmlLinkVM { Type="dropdown", URL="/home/privacy", Body="Privacy" }' />
                                 </li>
                             </ul>
                         </div>
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="navlink", URL="/blog", Body="Blog" }' />
-                        @if (User.IsInRole("Admin"))
-                        {
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="navlink", URL="/blogadmin", Body="Scaffolding" }' />
-                        }
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="navlink", URL="/scripting", Body="Scripting" }' />
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="navlink", URL="/quiz", Body="Quiz" }' />
+                            model='new HtmlLinkVM { Type="navlink", URL="/blog", Body="Blog" }' />
                         @if (User.IsInRole("Admin"))
                         {
                             <partial name="~/views/shared/htmllink.cshtml"
-                                model='new HtmlLink { Type="navlink", URL="/user", Body="Admin" }' />
+                                model='new HtmlLinkVM { Type="navlink", URL="/blogadmin", Body="Scaffolding" }' />
+                        }
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLinkVM { Type="navlink", URL="/scripting", Body="Scripting" }' />
+                        <partial name="~/views/shared/htmllink.cshtml"
+                            model='new HtmlLinkVM { Type="navlink", URL="/quiz", Body="Quiz" }' />
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <partial name="~/views/shared/htmllink.cshtml"
+                                model='new HtmlLinkVM { Type="navlink", URL="/user", Body="Admin" }' />
                         }
                     </div>
                 </div>
@@ -122,9 +122,9 @@
                         else
                         {
                             <partial name="~/views/shared/htmllink.cshtml"
-                                model='new HtmlLink { Type="navlink", URL="/account/register", Body="Register" }' />
+                                model='new HtmlLinkVM { Type="navlink", URL="/account/register", Body="Register" }' />
                             <partial name="~/views/shared/htmllink.cshtml"
-                                model='new HtmlLink { Type="navlink", URL="/account/login", Body="Login" }' />
+                                model='new HtmlLinkVM { Type="navlink", URL="/account/login", Body="Login" }' />
                         }
                     </div>
                 </div>
@@ -143,7 +143,7 @@
             &copy; 2023-2024 PopularGameEngines -
             <span class="ms-1">
                 <partial name="~/views/shared/htmllink.cshtml"
-                    model='new HtmlLink { Type="footer", URL="/home/privacy", Body="Privacy" }' />
+                    model='new HtmlLinkVM { Type="footer", URL="/home/privacy", Body="Privacy" }' />
             </span>
         </div>
     </footer>
