@@ -7,7 +7,7 @@
     <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
     <h3 class="text-2xl font-black">Use existing account</h3>
     <partial name="~/views/shared/htmllink.cshtml"
-        model='new HtmlLinkVM { Type="login-1", URL="/account/login", Body="Login" }' />
+        model='new HtmlLinkVM { Type="account-1", URL="/account/login", Body="Login" }' />
     <h3 class="text-2xl font-black mt-5 mb-3">Create new account</h3>
     <div class="flex flex-col text-red-500 mb-3">
         @Html.ValidationSummary(true)
@@ -17,11 +17,12 @@
         <div class="shadow-2xl mb-3">
             <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Name</span>
-                <input for="Name" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="Name"
+                <input id="eRegisterName" for="name"
+                    class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="name"
                     placeholder="Enter a name" />
             </div>
-            <small class="text-red-500" for="Name">
-                @Html.ValidationMessage("Name")
+            <small class="text-red-500" for="name">
+                @Html.ValidationMessage("name")
             </small>
         </div>
         @* Username *@
@@ -29,11 +30,12 @@
             <div class="flex">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Username</span>
-                <input for="Username" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
-                    name="Username" placeholder="Enter a username" />
+                <input id="eRegisterUsername" for="username"
+                    class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="username"
+                    placeholder="Enter a username" />
             </div>
-            <small class="text-red-500" for="Username">
-                @Html.ValidationMessage("Username")
+            <small class="text-red-500" for="username">
+                @Html.ValidationMessage("username")
             </small>
         </div>
         @* Password *@
@@ -41,11 +43,11 @@
             <div class="flex">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Password</span>
-                <input for="Password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
-                    name="Password" type="password" placeholder="Enter a password" />
+                <input for="password" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="password" type="password" placeholder="Enter a password" />
             </div>
-            <small class="text-red-500" for="Password">
-                @Html.ValidationMessage("Password")
+            <small class="text-red-500" for="password">
+                @Html.ValidationMessage("password")
             </small>
         </div>
         @* Confirm Password *@
@@ -53,18 +55,19 @@
             <div class="flex">
                 <span
                     class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Confirm<br />Password</span>
-                <input for="ConfirmPassword" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
-                    name="ConfirmPassword" type="password" placeholder="Re-enter the password" />
+                <input for="confirmpassword" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
+                    name="confirmpassword" type="password" placeholder="Re-enter the password" />
             </div>
-            <small class="text-red-500" for="ConfirmPassword">
-                @Html.ValidationMessage("ConfirmPassword")
+            <small class="text-red-500" for="confirmpassword">
+                @Html.ValidationMessage("confirmpassword")
             </small>
         </div>
         <div class="flex flex-col items-center gap-3">
             <div class="w-full flex flex-col lg:flex-row text-center lg:text-start gap-3">
-                <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3" type="submit">Register</button>
+                <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3" type="submit"
+                    onclick="storeFormValues();">Register</button>
                 <partial name="~/views/shared/htmllink.cshtml"
-                    model='new HtmlLinkVM { Type="login-2", URL="/", Body="Cancel" }' />
+                    model='new HtmlLinkVM { Type="account-2", URL="/", Body="Cancel" }' />
             </div>
         </div>
     </form>
