@@ -11,7 +11,7 @@ using PopularGameEngines.Data;
 namespace PopularGameEngines.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240312011247_Reply")]
+    [Migration("20240313174725_Reply")]
     partial class Reply
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

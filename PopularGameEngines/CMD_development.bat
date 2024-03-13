@@ -40,7 +40,7 @@ if %input% == 8 (
 )
 
 if %input% == 10 (
-	call call git reset --soft HEAD~1
+	call git reset --soft HEAD~1
 )
 
 echo ----------------

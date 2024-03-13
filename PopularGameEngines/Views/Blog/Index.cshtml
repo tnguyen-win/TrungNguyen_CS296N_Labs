@@ -80,8 +80,10 @@
                         <div
                             class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl">
                             <div class="flex flex-col gap-5 rounded-t-[1rem] border-b-[1px] border-[rgb(25%,25%,25%)] p-5">
-                                <div class="text-[rgb(75%,75%,75%)]">
+                                <div class="flex text-[rgb(75%,75%,75%)]">
                                     @reply.Body
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLinkVM { Type="message-1", URL=$"/blog/deletepost?messageId={@message.MessageId}" }' />
                                 </div>
                             </div>
                             <div class="flex flex-col rounded-b-[1rem] text-[rgb(75%,75%,75%)] p-5">
