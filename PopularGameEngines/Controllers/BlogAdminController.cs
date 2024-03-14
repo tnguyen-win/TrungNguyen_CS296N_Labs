@@ -107,9 +107,17 @@ namespace PopularGameEngines.Controllers
         {
             if (_context.Messages == null) return Problem("Entity set 'AppDbContext.Messages' is null.");
 
-            var message = await _context.Messages.FindAsync(id);
+            Message message = _repository.GetMessageByIdAsync(id).Result;
 
-            if (message != null) _context.Messages.Remove(message);
+            if (message != null)
+            {
+                if (message?.Replies.Count > 0)
+                {
+                    foreach (var reply in message.Replies) _context.Messages.Remove(reply);
+                    _context.Messages.Remove(message);
+                }
+                else _context.Messages.Remove(message);
+            }
 
             await _context.SaveChangesAsync();
 
