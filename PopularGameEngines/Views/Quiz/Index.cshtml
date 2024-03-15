@@ -1,4 +1,4 @@
-﻿@model QuizQuestions
+﻿@model QuizVM
 @{
     ViewBag.Title = "CS296N - Quiz - Homepage";
 }
@@ -20,7 +20,7 @@
             </small>
         </div>
         @* Editor *@
-        <div class="shadow-2xl my-10">
+        <div class="shadow-2xl my-5">
             <label class="text-2xl font-black" for="question2">@Model.Questions[2]</label>
             <div class="flex mt-5 mb-3">
                 <input id="question2"
@@ -46,7 +46,7 @@
             </small>
         </div>
         @* Unity *@
-        <div class="shadow-2xl my-10">
+        <div class="shadow-2xl my-5">
             <label class="text-2xl font-black" for="question4">@Model.Questions[4]</label>
             <div class="flex mt-5 mb-3">
                 <input id="question4"
@@ -59,7 +59,7 @@
             </small>
         </div>
         @* Check *@
-        <div class="flex mb-10">
+        <div class="flex">
             <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"
                 type="submit">Check Answers</button>
         </div>

@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "CS296N - Home - Privacy";
-    ViewBag.Link_privacy = "https://www.smarterasp.net/privacy";
-    ViewBag.Link_cookies = "https://www.smarterasp.net/cookies";
+    ViewBag.Link_privacy = "https://smarterasp.net/privacy";
+    ViewBag.Link_cookies = "https://smarterasp.net/cookies";
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
@@ -10,12 +10,12 @@
         <li class="mb-3">
             [1]
             <partial name="~/views/shared/htmllink.cshtml"
-                model='new HtmlLink { URL=@ViewBag.Link_privacy.ToString(), Body=@ViewBag.Link_privacy.ToString() }' />
+                model='new HtmlLinkVM { URL=@ViewBag.Link_privacy.ToString(), Body=@ViewBag.Link_privacy.ToString() }' />
         </li>
         <li>
             [2]
             <partial name="~/views/shared/htmllink.cshtml"
-                model='new HtmlLink { URL=@ViewBag.Link_cookies.ToString(), Body=@ViewBag.Link_cookies.ToString() }' />
+                model='new HtmlLinkVM { URL=@ViewBag.Link_cookies.ToString(), Body=@ViewBag.Link_cookies.ToString() }' />
         </li>
     </ul>
 </div>

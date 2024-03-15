@@ -1,5 +1,5 @@
 - **Home:**
-    - Overview: Page that displays a small FAQ.
+    - FAQ: Page that displays a small frequently asked questions list.
     - Homepage: Page that displays the landing page.
     - References: Page that displays citations for used information.
     - Privacy: Page that displays disclaimers about data that's collected from site visitors.

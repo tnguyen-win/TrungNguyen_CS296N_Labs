@@ -5,39 +5,41 @@
 }
 
 <div class="m-5 lg:mx-0 lg:my-20">
-    <h1 class="text-4xl font-black mb-10">@ViewBag.Title</h1>
+    <h1 class="text-4xl font-black mb-5">@ViewBag.Title</h1>
+    <div class="flex flex-col text-red-500 mt-3">
+        @Html.ValidationSummary(true)
+    </div>
     <form asp-action="edit">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="MessageId" />
         <input type="hidden" name="fromId" value="@Model.From.Id" />
         <input type="hidden" name="OriginalMessageId" value="@Model.OriginalMessageId" />
         @* Title *@
         <div class="shadow-2xl">
-            <div class="flex my-5">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Title</span>
                 <input id="title" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" asp-for="Title"
                     name="Title" placeholder="Modify post description" />
             </div>
         </div>
         @* Body *@
-        <div class="shadow-2xl my-5">
-            <div class="flex my-5">
+        <div class="shadow-2xl my-3">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Body</span>
                 <input id="body" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" asp-for="Body"
                     name="Body" placeholder="Modify post message" />
             </div>
         </div>
         @* Date *@
-        <div class="shadow-2xl my-5">
-            <div class="flex my-5">
+        <div class="shadow-2xl">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
                 <input id="date" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" asp-for="Date"
                     name="Date" placeholder="Modify post creation date" />
             </div>
         </div>
         @* Rating *@
-        <div class="shadow-2xl my-5">
-            <div class="flex my-5">
+        <div class="shadow-2xl mt-3 mb-5">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Rating</span>
                 <input id="rating" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" asp-for="Rating"
                     name="Rating" placeholder="Modify post rating" />
@@ -47,7 +49,7 @@
             <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"
                 type="submit">Save</button>
             <partial name="~/views/shared/htmllink.cshtml"
-                model='new HtmlLink { Type="login-2", URL="/blogadmin", Body="Back to List" }' />
+                model='new HtmlLinkVM { Type="account-2", URL="/blogadmin", Body="Back to List" }' />
         </div>
     </form>
 </div>

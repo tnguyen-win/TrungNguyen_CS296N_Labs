@@ -1,4 +1,4 @@
-﻿@model HtmlLink
+﻿@model HtmlLinkVM
 @{
     ViewBag.Title = "CS296N - Home - Homepage";
 }
@@ -9,7 +9,7 @@
     This site uses cookies.
     <form class="flex" method="dialog">
         <partial name="~/views/shared/htmllink.cshtml"
-            model='new HtmlLink { Type="dialog", URL="/home/privacy", Body="Learn More" }' />
+            model='new HtmlLinkVM { Type="dialog", URL="/home/privacy", Body="Learn More" }' />
         <button class="bg-cyan-400 hover:bg-cyan-300 text-black p-3">Dismiss</button>
     </form>
 </dialog>
@@ -26,7 +26,7 @@
                         Unreal Engine 5.2's Nanite demonstration of rendering 71 million polygons in real-time was quite
                         impressive.
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit5", Body="<sup>[5]</sup>" }' />
+                            model='new HtmlLinkVM { URL="/home/references#cit5", Body="<sup>[5]</sup>" }' />
                         However, Unreal Engine has always had a negative and harsh reputation for requiring high amounts
                         of file space (for instance, requiring up to 1GB or more for an new empty project).
                         And it also has a bad reputation for having long compiling times.
@@ -81,19 +81,19 @@
                         game development crowd, Unity's user-base has recently had a mass exodus, originating from a
                         recent debacle concerning its royalty policy.
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit7", Body="<sup>[7]</sup>" }' />
+                            model='new HtmlLinkVM { URL="/home/references#cit7", Body="<sup>[7]</sup>" }' />
                         In response to the massive drop in Unity stocks (the Unity CEO has ironically sold a lot of his
                         own Unity stocks before the royalty policy change was officially announced)
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit8", Body="<sup>[8]</sup>" }' />
+                            model='new HtmlLinkVM { URL="/home/references#cit8", Body="<sup>[8]</sup>" }' />
                         some legitimate death threats
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit9", Body="<sup>[9]</sup>" }' />, and said
+                            model='new HtmlLinkVM { URL="/home/references#cit9", Body="<sup>[9]</sup>" }' />, and said
                         mass exodus, the royalty policy
                         was tweaked once again: to include clearer clarifications, to reduce or remove some intentional
                         limitations, and to increase some perks.
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit10", Body="<sup>[10]</sup>" }' />
+                            model='new HtmlLinkVM { URL="/home/references#cit10", Body="<sup>[10]</sup>" }' />
                         The ironic thing is that most of the Unity community has acted like it's the end of the world,
                         despite the royalty policy only affecting those who have made ~$100,000 in revenue from their
                         game, and the changed policy wouldn't even take effect until the first day of next year.
@@ -109,7 +109,7 @@
                         Even more recently, the Unity company announced the stepping down of their CEO (either of his
                         own accord or by majority vote of board members).
                         <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { URL="/home/references#cit11", Body="<sup>[11]</sup>" }' />
+                            model='new HtmlLinkVM { URL="/home/references#cit11", Body="<sup>[11]</sup>" }' />
                     </li>
                 </ul>
             </li>

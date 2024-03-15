@@ -1,6 +1,6 @@
 namespace PopularGameEngines.Models
 {
-    public class HtmlLink
+    public class HtmlLinkVM
     {
         public string? Type { get; set; }
 

@@ -8,15 +8,15 @@
     <form method="post">
         @* Author *@
         <div class="shadow-2xl">
-            <div class="flex my-5">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Author</span>
                 <input for="author" class="w-full w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3"
                     name="author" placeholder="Enter post sender" />
             </div>
         </div>
         @* Date *@
-        <div class="shadow-2xl my-5">
-            <div class="flex my-5">
+        <div class="shadow-2xl mt-3 mb-5">
+            <div class="flex">
                 <span class="bg-[rgb(10%,10%,10%)] border-[1px] border-e-0 border-[rgb(25%,25%,25%)] p-3">Date</span>
                 <input for="date" class="w-full bg-inherit border-[1px] border-[rgb(25%,25%,25%)] p-3" name="date"
                     placeholder="Enter post submission date" />
@@ -26,23 +26,25 @@
             <button class="w-full lg:w-max bg-cyan-400 hover:bg-cyan-300 text-center lg:text-start text-black p-3"
                 type="submit">Filter</button>
             <partial name="~/views/shared/htmllink.cshtml"
-                model='new HtmlLink { Type="blog-1", URL="/blog", Body="Reset Filter" }' />
+                model='new HtmlLinkVM { Type="blog-1", URL="/blog", Body="Reset Filter" }' />
         </div>
     </form>
     @if (Model != null)
     {
-        <h1 class="text-4xl font-black my-10">Posts</h1>
-        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full mt-10 mb-5">
+        <h3 class="text-2xl font-black mt-20">Posts</h3>
+        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full my-5">
             @foreach (var message in Model)
             {
                 if (message.OriginalMessageId == null)
                 {
                     <li class="relative">
                         <div
-                            class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl mx-5 lg:m-0">
+                            class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl">
                             <div class="flex flex-col gap-5 rounded-t-[1rem] border-b-[1px] border-[rgb(25%,25%,25%)] p-5">
                                 <div class="flex text-3xl">
                                     @message.Title
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLinkVM { Type="message-1", URL=$"/blog/deletepost?messageId={@message.MessageId}" }' />
                                 </div>
                                 <div class="text-[rgb(75%,75%,75%)]">
                                     @message.Body
@@ -55,49 +57,53 @@
                                 <div>
                                     <span class="font-black text-white">Last updated:</span> @message.Date
                                 </div>
-                                <div>
-                                    <span class="font-black text-white">Post rating:</span> @message.Rating
+                                <div class="flex">
+                                    <div>
+                                        <span class="font-black text-white">Post rating:</span> @message.Rating
+                                    </div>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLinkVM { Type="message-2", URL=$"/blog/reply?OriginalMessageId={@message.MessageId}" }' />
                                 </div>
                             </div>
                         </div>
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="message-1", URL=$"/blog/reply?OriginalMessageId={@message.MessageId}" }' />
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="message-2", URL=$"/blog/deletepost?messageId={@message.MessageId}" }' />
                     </li>
                 }
             }
         </ul>
-        <h1 class="text-4xl font-black my-10">Replies</h1>
-        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full mt-10 mb-5">
+        <h3 class="text-2xl font-black mt-10">Replies</h3>
+        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full mt-5 mb-10">
             @foreach (var message in Model)
             {
                 foreach (Message reply in message.Replies)
                 {
-                    <li class="relative">
+                    <li>
                         <div
-                            class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl mx-5 lg:m-0">
+                            class="h-full flex flex-col rounded-[1rem] bg-[rgb(10%,10%,10%)] border-[1px] border-[rgb(25%,25%,25%)] shadow-2xl">
                             <div class="flex flex-col gap-5 rounded-t-[1rem] border-b-[1px] border-[rgb(25%,25%,25%)] p-5">
-                                <div class="text-[rgb(75%,75%,75%)]">
+                                <div class="flex text-[rgb(75%,75%,75%)]">
                                     @reply.Body
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLinkVM { Type="message-1", URL=$"/blog/deletepost?messageId={@message.MessageId}" }' />
                                 </div>
                             </div>
                             <div class="flex flex-col rounded-b-[1rem] text-[rgb(75%,75%,75%)] p-5">
                                 <div>
                                     <span class="font-black text-white">Created by:</span> @reply.From.Name
                                 </div>
-                                <div>
-                                    <span class="font-black text-white">Last updated:</span> @reply.Date
+                                <div class="flex">
+                                    <div>
+                                        <span class="font-black text-white">Last updated:</span> @reply.Date
+                                    </div>
+                                    <partial name="~/views/shared/htmllink.cshtml"
+                                        model='new HtmlLinkVM { Type="message-2", URL=$"/blog/deletepost?messageId={@reply.MessageId}" }' />
                                 </div>
                             </div>
                         </div>
-                        <partial name="~/views/shared/htmllink.cshtml"
-                            model='new HtmlLink { Type="message-2", URL=$"/blog/deletepost?messageId={@reply.MessageId}" }' />
                     </li>
                 }
             }
         </ul>
     }
     <partial name="~/views/shared/htmllink.cshtml"
-        model='new HtmlLink { Type="blog-2", URL="/blog/post", Body="Create Post" }' />
+        model='new HtmlLinkVM { Type="blog-2", URL="/blog/post", Body="Create Post" }' />
 </div>
