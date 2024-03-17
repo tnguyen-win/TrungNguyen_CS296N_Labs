@@ -3,7 +3,7 @@
     const string colorDefault = "text-cyan-400 hover:text-cyan-300";
     const string class1 = $"flex items-center {colorDefault} p-3";
 
-    switch (@Model.Type)
+    switch (Model.Type)
     {
         case "brand":
             c = $"flex items-center font-black text-xl {colorDefault} p-6 lg:px-4";
@@ -61,7 +61,7 @@
                 </svg>
                 break;
             default:
-                @Html.Raw(@Model.Body)
+                @Html.Raw(Model.Body)
                 break;
         }
     }

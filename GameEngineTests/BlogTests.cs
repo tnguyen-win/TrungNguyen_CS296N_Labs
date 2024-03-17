@@ -5,7 +5,7 @@ using PopularGameEngines.Models;
 namespace GameEngineTests {
     public class GameEngineTests {
         [Fact]
-        public void ForumPostTest() {
+        public void BlogPostTest() {
             var repo = new FakeBlogRepository();
             var controller = new BlogController(repo, null!);
             var model = new Message() {
